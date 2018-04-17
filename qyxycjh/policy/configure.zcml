@@ -1,0 +1,54 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:grok="http://namespaces.zope.org/grok"    
+    i18n_domain="qyxycjh.policy">
+    
+
+  <includeDependencies package="." />
+ 
+  <i18n:registerTranslations directory="locales" />
+    <include package=".browser" />     
+    <include package=".portlet" />
+    <grok:grok package="." /> 
+  <!-- -*- cusomize indexer -*- -->
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="qyxycjh.policy"
+      directory="profiles/default"
+      description="Installs the qyxycjh.policy package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <!-- -*- extra stuff goes here -*- -->
+  
+  <genericsetup:registerProfile
+      name="post"
+      title="qyxycjh.policy post steps"
+      directory="profiles/post"
+      description="some clear and post steps after initial the site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />  
+  <genericsetup:registerProfile
+      name="init"
+      title="qyxycjh.policy initial site"
+      directory="profiles/init"
+      description="some initial steps"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+
+  
+  <genericsetup:upgradeStep
+      title="create directory tree"
+      description="create directory tree."
+      source="1000"
+      destination="1001"
+      handler="qyxycjh.policy.migration.create_tree"
+      profile="qyxycjh.policy:default"/>
+
+    
+</configure>

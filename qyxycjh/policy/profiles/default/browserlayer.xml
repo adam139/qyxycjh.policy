@@ -1,0 +1,10 @@
+<layers>
+    
+    <!-- Enable the Diazo960 Theme layer when installed -->
+    
+    <layer
+        name="qyxycjh.policy"
+        interface="qyxycjh.policy.browser.interfaces.IThemeSpecific"
+        />
+
+</layers>
