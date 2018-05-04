@@ -23,15 +23,15 @@ $(document).ready(function(){
     $('a[href$="juanzenggongshi"]').on("click",function (e) {
     	  e.preventDefault();
 		  var url = $(this).attr("href");
-		  window.location.href = url + "/@@donate_listings";
+		  window.location.href = url;
 		  return false;
     });	
 								
-	StartRollV();
+	//StartRollV();
 	//StartRollVs();
-	rolltext(".roll-wrapper");
+	//rolltext(".roll-wrapper");
     var root = $("#roll_chanpin").attr("data-root");
-	var ajaxurl = root + "/cishanxiangmu/tuijianxiangmu/@@barsview_mini";
+	var ajaxurl = root + "/xiehuidongtai/tupianxinwen/@@barsview_mini";
 	ajaxfetchimg("roll_chanpin", ajaxurl, ".roll_image", 1);
 	});
 });

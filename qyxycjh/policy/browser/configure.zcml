@@ -23,7 +23,6 @@
       template="templates/homepage.pt"
     />
     
-<!--
     <browser:page
       for="plone.app.contenttypes.interfaces.IFolder"
       name="tableview"
@@ -31,9 +30,7 @@
       permission="zope.Public"
       layer=".interfaces.IThemeSpecific"       
       template="templates/container_table_list.pt"
-    />        
-         
-  -->
+    />  
     <browser:page
       for="*"
       name="footer"
@@ -83,18 +80,8 @@
 		for="*"
 		permission="zope2.View"
 		class=".macros.Macros"/>
-     
-   <z3c:widgetTemplate
-        mode="input"
- 		widget="collective.z3cform.datetimewidget.interfaces.IDateWidget"        
- 		layer=".interfaces.IThemeSpecific"
- 		template="templates/date_input.pt" />
  		
-   <z3c:widgetTemplate
-        mode="input"
- 		widget="plone.formwidget.namedfile.interfaces.INamedFileWidget"        
- 		layer=".interfaces.IThemeSpecific"
- 		template="templates/file_input.pt" />
+
  		 		
    <z3c:widgetTemplate
         mode="input"

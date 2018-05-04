@@ -10,10 +10,7 @@ class InputError(Exception):
 
 #文件夹mark interfaces,用于定义视图
 # todo :定义db_ajax_listing view
-class IAixinjuankuan (Interface):
-    """某一捐赠项目具体捐赠记录"""
-class IJuanzenggongshi (Interface):
-    """展示已有捐赠的项目"""
+
 
 class IContainerTablelist (Interface):
     """文件夹标记接口"""

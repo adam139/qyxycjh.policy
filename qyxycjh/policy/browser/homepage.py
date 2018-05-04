@@ -9,10 +9,10 @@ from Products.CMFPlone.resources import add_resource_on_request
 # add_resource_on_request(self.request, 'jquery.recurrenceinput')
 # add_bundle_on_request(self.request, 'thememapper')
 
-from qyxycjh.policy import _
+from xtcs.policy import _
 from my315ok.products.product import Iproduct
 from collective.diazotheme.bootstrap.browser.homepage import HomepageView as baseview
-from qyxycjh.policy.browser.interfaces import IThemeSpecific
+from xtcs.policy.browser.interfaces import IThemeSpecific
 
 # grok.templatedir('templates')
 
@@ -55,19 +55,19 @@ class FrontpageView(baseview):
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="http://www.qyxycjh.org/xinwenzhongxin/tupianxinwen/xiangtanshishekuaizuzhishoucibishuzhanglianxikuaiyishenglizhaokai/@@images/image/preview" alt="..."/>
+      <img src="http://www.xtcs.org/xinwenzhongxin/tupianxinwen/xiangtanshishekuaizuzhishoucibishuzhanglianxikuaiyishenglizhaokai/@@images/image/preview" alt="..."/>
       <div class="carousel-caption">
         <h3>大会召开</h3>
       </div>
     </div>
     <div class="item">
-      <img src="http://www.qyxycjh.org/xinwenzhongxin/tupianxinwen/xiangtanshishekuaizuzhishoucibishuzhanglianxikuaiyishenglizhaokai/@@images/image/preview" alt="..."/>
+      <img src="http://www.xtcs.org/xinwenzhongxin/tupianxinwen/xiangtanshishekuaizuzhishoucibishuzhanglianxikuaiyishenglizhaokai/@@images/image/preview" alt="..."/>
       <div class="carousel-caption">
         <h3>大会召开</h3>
       </div>
     </div>
     <div class="item">
-      <img src="http://www.qyxycjh.org/xinwenzhongxin/tupianxinwen/xiangtanshishekuaizuzhishoucibishuzhanglianxikuaiyishenglizhaokai/@@images/image/preview" alt="..."/>
+      <img src="http://www.xtcs.org/xinwenzhongxin/tupianxinwen/xiangtanshishekuaizuzhishoucibishuzhanglianxikuaiyishenglizhaokai/@@images/image/preview" alt="..."/>
       <div class="carousel-caption">
         <h3>大会召开</h3>
       </div>
@@ -178,7 +178,7 @@ class FrontpageView(baseview):
         
 # roll table output
     def getDonateFolder(self):
-        from qyxycjh.policy.interfaces import IJuanzenggongshi
+        from xtcs.policy.interfaces import IJuanzenggongshi
         brains = self.catalog()({'object_provides':IJuanzenggongshi.__identifier__})
         context = brains[0].getObject()
         return context        

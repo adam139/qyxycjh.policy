@@ -22,33 +22,20 @@
       directory="profiles/default"
       description="Installs the qyxycjh.policy package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
       />
-  <!-- -*- extra stuff goes here -*- -->
-  
-  <genericsetup:registerProfile
-      name="post"
-      title="qyxycjh.policy post steps"
-      directory="profiles/post"
-      description="some clear and post steps after initial the site"
+   <genericsetup:registerProfile
+      name="uninstall"
+      title="Uninstall: qyxycjh.policy"
+      directory="profiles/uninstall"
+      description="Uninstalls the qyxycjh.policy package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      />  
-  <genericsetup:registerProfile
-      name="init"
-      title="qyxycjh.policy initial site"
-      directory="profiles/init"
-      description="some initial steps"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
       />
 
-
-  
-  <genericsetup:upgradeStep
-      title="create directory tree"
-      description="create directory tree."
-      source="1000"
-      destination="1001"
-      handler="qyxycjh.policy.migration.create_tree"
-      profile="qyxycjh.policy:default"/>
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="qyxycjh.policy-hiddenprofiles" />
 
     
 </configure>

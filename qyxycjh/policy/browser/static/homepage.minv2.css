@@ -2,8 +2,8 @@
 .row-1 .portlet{height:228px;overflow:hidden;margin-bottom:0;}
 .row-3 .portlet{height:128px;overflow:hidden;margin-bottom:0;}
 .row-4 .portlet{height:158px;overflow:hidden;margin-bottom:0;}
-.kuputab-container,.portlet{margin:0;border:1px solid #f23e03;border-top:none}
-.row-4 .col-md-8 .roll_imageportlet{background-color:#e56003;}
+.kuputab-container,.portlet{margin:0;border:1px solid #1663CC;border-top:none}
+.row-4 .col-md-8 .roll_imageportlet{background-color:#0B489B;}
 #search_input{width:100%}.shortcutlink p{margin-bottom:7px}
 .nav-tabs .col-xs-4{padding-left:0;padding-right:0}
 .nav-tabs li:first-child{padding-left:21px}
@@ -20,7 +20,7 @@ td{text-align:center;background-color:#fff}
 .navbar{margin-bottom:10px}
 .navbar-right{margin-right:6px}
 .navbar-nav>li>a{font-weight:700}
-.navbar-brand img{margin-top:-2px}
+
 .no-padding{background-color:#dcecff}
 img.right{float:right}
 .portletItemDetails{float:right;margin-right:1em;color:#000}
@@ -47,7 +47,7 @@ img.right{float:right}
 .right-ad img{display:block;margin-bottom:1px;margin-left:auto;margin-right:auto;width:100%}
 .right-ad .top{margin-top:4px}
 .big-ad{
-	background:url(http://images.315ok.org/qyxycjh/images/banner_1280_135.jpg) no-repeat scroll 0 0 transparent;color:#c03;background-color: #fef23e;font-weight:700;height:135px;text-align:center;width:100%;cursor:pointer}
+	background:url(http://images.315ok.org/xtcs/images/banner_1280_135.jpg) no-repeat scroll 0 0 transparent;color:#c03;background-color: #fef23e;font-weight:700;height:135px;text-align:center;width:100%;cursor:pointer}
 .adtitle{font-size:32px;margin-bottom:0;padding-top:6px}
 .addescription{font-size:24px;text-indent:4em}
 #juanzengfangshi .tabcontent-lists{padding-left:0}
@@ -58,7 +58,7 @@ ul.rolltext li{height:24px}
 .portletItem,.rolltext li{line-height:2em;margin-left:-24px;list-style:none outside url(http://images.315ok.org/xtshzz/images/red_point.jpg);border-bottom:1px dashed #b4b4b4}
 .tab-content{margin-top:14px;background-color:#fff}
 .tabcontent-lists .portletItem{margin-left:-16px}
-.kuputab-selectors,.portletHeader{background:url(http://images.315ok.org/qyxycjh/images/portletnavbg_7_41.jpg) repeat-x scroll 0 0 transparent;height:41px;margin:0}
+.kuputab-selectors,.portletHeader{background:url(http://images.315ok.org/qyxycjh/images/portlet_headerbg_9_41.jpg) repeat-x scroll 0 0 transparent;height:41px;margin:0}
 .friendlybg{margin-top:6px;background:transparent url(http://images.315ok.org/qyxycjh/images/friendlinkbg.jpg) repeat-x 0 0;border:none;width:100%;height:108px;color:#fff}.label{color:#787878}.copyright{padding-top:12px}
 .copyright a{color:#FFC40D}
 .linkzone a{color:#fff;font-size:12px;text-decoration:none}
@@ -74,7 +74,7 @@ ul.rolltext li{height:24px}
 .nav-tabs{border-bottom:none}
 .navbar-inner{line-height:20px;font-size:14px;font-weight:700}
 .kuputab-selectors, .portletHeader {
-background: url("http://images.315ok.org/qyxycjh/images/portletnavbg_7_41.jpg") repeat-x scroll 0 0 transparent;
+background: url("http://images.315ok.org/qyxycjh/images/portlet_headerbg_9_41.jpg") repeat-x scroll 0 0 transparent;
 height: 41px;
 margin: 0;
 padding:0;
@@ -116,3 +116,4 @@ margin-top:9px;
 .roll_image li a img {width:180px;height:100px;}
 .roll_image ul.img {*height:128px;}
 #roll_chanpin .imgtitle {width:184px;overflow:hidden;font-size:12px;line-height:2.1;margin-top:6px;}
+.map_brand a:hover,.map_brand a:focus {color:#fff;text-decoration:none}

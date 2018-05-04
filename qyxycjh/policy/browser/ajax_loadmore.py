@@ -154,8 +154,8 @@ class favoritemore(grok.View):
         formstart = int(formst)*10 
         nextstart = formstart + 10                
         favorite_view = getMultiAdapter((self.context, self.request),name=u"tableview")
-        favoritenum = len(favorite_view.allitems())
-        
+
+        favoritenum = len(favorite_view.allitems())        
         if nextstart >= favoritenum :
             ifmore =  1
             pending = 0
@@ -164,20 +164,15 @@ class favoritemore(grok.View):
             pending = favoritenum - nextstart          
         braindata = favorite_view.getDocuments(formstart,10)        
         outhtml = ""
-
         pending = "%s" % (pending)
-        for i in braindata:
-          
+        for i in braindata:          
             out = """<tr>
             <td class="col-md-9 title"><a href="%(url)s">%(title)s</a></td>
             <td class="col-md-3 item">%(pubtime)s</td>
             </tr>""" % dict(url = i.getURL(),
                             title = i.Title,
                             pubtime = i.created.strftime('%Y-%m-%d'))           
-            outhtml = "%s%s" %(outhtml ,out)
-            
-        data = {'outhtml': outhtml,'pending':pending,'ifmore':ifmore}
-    
+            outhtml = "%s%s" %(outhtml ,out)            
+        data = {'outhtml': outhtml,'pending':pending,'ifmore':ifmore}    
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(data)
-

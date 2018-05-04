@@ -10,13 +10,11 @@ from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
     TEST_USER_PASSWORD, setRoles
 from plone.testing.z2 import Browser
 import unittest
-from plone.namedfile.file import NamedBlobImage,NamedBlobFile,NamedImage
-import os
+
 from plone.app.textfield.value import RichTextValue
-from qyxycjh.policy.mapping_db import  Article
-from qyxycjh.policy.interfaces import IArticleLocator
+
 from zope.component import getUtility
-from qyxycjh.policy import Session as session
+
 
 def getFile(filename):
     """ return contents of the file with the given name """
@@ -36,7 +34,7 @@ class TestView(unittest.TestCase):
 # check collection sort_on,sort_reversed etc.        
 
         portal = self.layer['portal']
-        item = portal['sqls']['gongyixinwen']  
+        item = portal['sqls']['xiehuidongtai']  
         self.assertTrue(item.sort_on == "created")
         self.assertTrue(item.sort_reversed == True)      
 

@@ -4,7 +4,7 @@ import hmac
 from hashlib import sha1 as sha
 from plone.keyring.interfaces import IKeyManager
 from Products.CMFCore.utils import getToolByName
-from qyxycjh.policy.setuphandlers import STRUCTURE,_create_content 
+from qyxycjh.policy.setuphandlers import STRUCTURE,_create_content,import_article 
 from qyxycjh.policy.testing import FunctionalTesting
 from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
     TEST_USER_PASSWORD, setRoles
@@ -15,7 +15,7 @@ import os
 from plone.app.textfield.value import RichTextValue
 
 from zope.component import getUtility
-from qyxycjh.policy import Session as session
+
 
 def getFile(filename):
     """ return contents of the file with the given name """
@@ -28,90 +28,14 @@ class TestView(unittest.TestCase):
     def setUp(self):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        import datetime
-        start = datetime.datetime.today()
-        end = start + datetime.timedelta(7)
         for item in STRUCTURE:
             _create_content(item, portal)         
- 
+        import_article(portal)
 # import articles        
-        locator = getUtility(IArticleLocator)
-        # cishandongtai
-        articles = locator.query(start=0,size=25,multi=1,sortparentid=1003,sortchildid=3)
-        if articles == None:return
-        for article in articles:                                  
-            docid = str(article.id)       
-            portal['cishanzixun']['cishandongtai'].invokeFactory('Document', docid)
-            document = portal['cishanzixun']['cishandongtai'][docid]
-            document.title = article.title
-            document.description = "This is my document."
-            document.text = RichTextValue(article.content)        
-        # gongyixinwen
-        articles = locator.query(start=0,size=5,multi=1,sortparentid=1003,sortchildid=1)
-        if articles == None:return
-        for article in articles:                                  
-            docid = str(article.id)       
-            portal['cishanzixun']['gongyixinwen'].invokeFactory('Document', docid)
-            document = portal['cishanzixun']['gongyixinwen'][docid]
-            document.title = article.title
-            document.description = "This is my document."
-            document.text = RichTextValue(article.content)         
-        # huodongtonggao
-        articles = locator.query(start=0,size=2,multi=1,sortparentid=1003,sortchildid=2)
-        if articles == None:return
-        for article in articles:                                  
-            docid = str(article.id)       
-            portal['cishanzixun']['huodongtonggao'].invokeFactory('Document', docid)
-            document = portal['cishanzixun']['huodongtonggao'][docid]
-            document.title = article.title
-            document.description = "This is my document."
-            document.text = RichTextValue(article.content)        
-        # zhengcefagui
-        articles = locator.query(start=0,size=2,multi=1,sortparentid=1008,sortchildid=8)
-        if articles == None:return
-        for article in articles:                                  
-            docid = str(article.id)       
-            portal['zuzhiguanli']['zhengcefagui'].invokeFactory('Document', docid)
-            document = portal['zuzhiguanli']['zhengcefagui'][docid]
-            document.title = article.title
-            document.description = "This is my document."
-            document.text = RichTextValue(article.content) 
 
-        # guizhangzhidu
-        articles = locator.query(start=0,size=2,multi=1,sortparentid=1008,sortchildid=6)
-        if articles == None:return
-        for article in articles:                                  
-            docid = str(article.id)       
-            portal['zuzhiguanli']['zhengcefagui'].invokeFactory('Document', docid)
-            document = portal['zuzhiguanli']['zhengcefagui'][docid]
-            document.title = article.title
-            document.description = "This is my document."
-            document.text = RichTextValue(article.content)
-
-        # yigonghuodong
-        articles = locator.query(start=0,size=2,multi=1,sortparentid=1006,sortchildid=18)
-        if articles == None:return
-        for article in articles:                                  
-            docid = str(article.id)       
-            portal['yigongzhongxin']['yigonghuodong'].invokeFactory('Document', docid)
-            document = portal['yigongzhongxin']['yigonghuodong'][docid]
-            document.title = article.title
-            document.description = "This is my document."
-            document.text = RichTextValue(article.content)           
-             
-        data = getFile('image.jpg').read()
-        item = portal['cishanzixun']['tupianxinwen']['prdt1']
-        item.image = NamedBlobImage(data, 'image/jpg', u'image.jpg')
-        item.text = u"图片新闻1"
-        item = portal['cishanzixun']['tupianxinwen']['prdt2']
-        item.image = NamedBlobImage(data, 'image/jpg', u'image.jpg')
-        item.text = u"图片新闻2"
-        item = portal['cishanzixun']['tupianxinwen']['prdt3']
-        item.image = NamedBlobImage(data, 'image/jpg', u'image.jpg')
-        item.text = u"图片新闻3"                                                                                                                          
         self.portal = portal
     
-    def test_homepage_view(self):
+    def test_front(self):
 
         app = self.layer['app']
         portal = self.layer['portal']       
@@ -121,6 +45,8 @@ class TestView(unittest.TestCase):
 
         import transaction
         transaction.commit()
+        import pdb
+        pdb.set_trace()
         obj = portal.absolute_url() + '/@@index.html'    
         browser.open(obj)
  
@@ -134,16 +60,15 @@ class TestView(unittest.TestCase):
         auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
         request.form = {
                         '_authenticator': auth,
-                        'formstart': 2,
-                        'size':10, 
-                        'id':0,
-                        'multi':1,                                                                      
+                        'formstart': 0,
+                        'size':10                                                                   
                         }
 # Look up and invoke the view via traversal
-        target = self.portal['cishanzixun']['cishandongtai']
+        target = self.portal['xiehuidongtai']
         view = target.restrictedTraverse('@@favoritemore')
         result = view()
         outstr = u'class="col-md-9 title"'
+
         self.assertTrue(outstr in json.loads(result)['outhtml'])
       
         
@@ -157,7 +82,7 @@ class TestView(unittest.TestCase):
 
         import transaction
         transaction.commit()
-        target = self.portal['cishanzixun']['cishandongtai']
+        target = self.portal['zhengcefagui']
         page = target.absolute_url() + '/@@tableview'    
         browser.open(page)
  

@@ -35,13 +35,15 @@ class SitePolicy(PloneSandboxLayer):
 #         import collective.diazotheme.bootstrap
         import qyxycjh.theme
         import my315ok.products
+        import plone.namedfile
 #         import my315ok.orgnization
         xmlconfig.file('configure.zcml', plone.app.contenttypes, context=configurationContext)
 #         xmlconfig.file('configure.zcml', collective.diazotheme.bootstrap, context=configurationContext)
         xmlconfig.file('configure.zcml', my315ok.products, context=configurationContext)
 #         xmlconfig.file('configure.zcml', my315ok.orgnization, context=configurationContext)
         xmlconfig.file('configure.zcml', qyxycjh.theme, context=configurationContext)
-        xmlconfig.file('configure.zcml', qyxycjh.policy, context=configurationContext)        
+        xmlconfig.file('configure.zcml', qyxycjh.policy, context=configurationContext)
+        xmlconfig.file('configure.zcml', plone.namedfile, context=configurationContext)        
        
     
     def tearDownZope(self, app):

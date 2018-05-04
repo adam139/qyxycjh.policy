@@ -2,20 +2,45 @@
 from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
 from plone import api
 from plone.app.dexterity.behaviors import constrains
+from plone.app.textfield.value import RichTextValue
 from zope.dottedname.resolve import resolve
 from Products.Five.utilities.marker import mark
-
+from Products.CMFPlone.interfaces import INonInstallable
+from zope.interface import implementer
 from plone.namedfile.file import NamedImage
 
 from logging import getLogger
 logger = getLogger(__name__)
 
+@implementer(INonInstallable)
+class HiddenProfiles(object):
+
+    def getNonInstallableProfiles(self):
+        """Hide uninstall profile from site-creation and quickinstaller"""
+        return [
+            'qyxycjh.policy:uninstall',
+        ]
+
+
 # for image field data
 
+def _load_image(slider):
+    from plone.namedfile.file import NamedImage
+    import os
+    filename = os.path.join(
+        os.path.dirname(__file__),
+        'browser',
+        'static',
+        'slide_{0}.jpg'.format(slider),
+    )
+    return NamedImage(
+        data=open(filename, 'r').read(),
+        filename=u'slide_{0}.jpg'.format(slider)
+    )
+image1 = _load_image(1)
+image2 = _load_image(2)
+image3 = _load_image(3)
 
-data = open('/home/plone/workspace/Plone5sites/sites/src/qyxycjh.policy/qyxycjh/policy/tests/image.jpg','r').read()
-
-image = NamedImage(data, 'image/jpg', u'image.jpg')
 
 default = { 'i': 'portal_type',
            'o': 'plone.app.querystring.operation.string.is',
@@ -28,81 +53,47 @@ defaultpath = {
                 }
 import copy
 
-defaultpath.update({'v':'/cishanzixun/gongyixinwen'})
-gongyixinwen = [default,defaultpath]
+defaultpath.update({'v':'/guanyuqixie'})
+guanyuqixie = [default,defaultpath]
 
-cishandongtaipath = copy.copy(defaultpath)
-cishandongtaipath.update({'v':'/cishanzixun/cishandongtai'})
-cishandongtai = [default,cishandongtaipath]
+xiehuidongtaipath = copy.copy(defaultpath)
+xiehuidongtaipath.update({'v':'/xiehuidongtai'})
+xiehuidongtai = [default,xiehuidongtaipath]
 
-huodongtonggaopath = copy.copy(defaultpath)
-huodongtonggaopath.update({'v':'/cishanzixun/huodongtonggao'})
-huodongtonggao = [default,huodongtonggaopath]
-
-yigonghuodongpath = copy.copy(defaultpath)
-yigonghuodongpath.update({'v':'/yigongzhongxin/yigonghuodong'})
-yigonghuodong = [default,yigonghuodongpath] 
-
-yigongtuanduipath = copy.copy(defaultpath)
-yigongtuanduipath.update({'v':'/yigongzhongxin/yigongtuandui'})
-yigongtuandui = [default,yigongtuanduipath]
-
-cishanwenzhaipath = copy.copy(defaultpath)
-cishanwenzhaipath.update({'v':'/cishanshequ/cishanwenzhai'})
-cishanwenzhai = [default,cishanwenzhaipath]
-
-aixingushipath = copy.copy(defaultpath)
-aixingushipath.update({'v':'/cishanshequ/aixingushi'})
-aixingushi = [default,aixingushipath]
-
-jingcaibowenpath = copy.copy(defaultpath)
-jingcaibowenpath.update({'v':'/cishanshequ/jingcaibowen'})
-jingcaibowen = [default,jingcaibowenpath]
-
-luntanretiepath = copy.copy(defaultpath)
-luntanretiepath.update({'v':'/cishanshequ/luntanretie'})
-luntanretie = [default,luntanretiepath]
-
-guizhangzhidupath = copy.copy(defaultpath)
-guizhangzhidupath.update({'v':'/zuzhiguanli/guizhangzhidu'})
-guizhangzhidu = [default,guizhangzhidupath]
+hangyezixunpath = copy.copy(defaultpath)
+hangyezixunpath.update({'v':'/hangyezixun'})
+hangyezixun = [default,hangyezixunpath]
 
 zhengcefaguipath = copy.copy(defaultpath)
-zhengcefaguipath.update({'v':'/zuzhiguanli/zhengcefagui'})
-zhengcefagui = [default,zhengcefaguipath]
+zhengcefaguipath.update({'v':'/zhengcefagui'})
+zhengcefagui = [default,zhengcefaguipath] 
+
+meitibaodaopath = copy.copy(defaultpath)
+meitibaodaopath.update({'v':'/meitibaodao'})
+meitibaodao = [default,meitibaodaopath]
+
+huiyuandanweipath = copy.copy(defaultpath)
+huiyuandanweipath.update({'v':'/huiyuandanwei'})
+huiyuandanwei = [default,huiyuandanweipath]
 
 
 
 STRUCTURE = [
     {
         'type': 'Folder',
-        'title': u'慈善资讯',
-        'id': 'cishanzixun',
-        'description': u'慈善资讯',
+        'title': u'关于企协',
+        'id': 'guanyuqixie',
+        'description': u'关于企协',
+        'layout': 'tableview'
+    },
+    {
+        'type': 'Folder',
+        'title': u'协会动态',
+        'id': 'xiehuidongtai',
+        'description': u'协会动态',
         'layout': 'tableview',
         'children': [
                      {
-            'type': 'Folder',
-            'title': u'公益新闻',
-            'id': 'gongyixinwen',
-            'description': u'公益新闻',
-            'layout': 'tableview',
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'活动通告',
-            'id': 'huodongtonggao',
-            'description': u'活动通告',
-            'layout': 'tableview',
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'慈善动态',
-            'id': 'cishandongtai',
-            'description': u'慈善动态',
-            'layout': 'tableview',
-                      },
-                     {                                                                                     
             'type': 'my315ok.products.productfolder',
             'title': u'图片新闻',
             'id': 'tupianxinwen',
@@ -112,165 +103,57 @@ STRUCTURE = [
             'type': 'my315ok.products.product',
             'title': u'图片新闻',
             'id': 'prdt1',
-            'image':image,            
+            'image':image1,            
             'description': u'图片新闻'
                         } ,
                          {
             'type': 'my315ok.products.product',
             'title': u'图片新闻2',
             'id': 'prdt2',
-            'image':image,            
+            'image':image2,            
             'description': u'图片新闻2'
                         } ,
                          {
             'type': 'my315ok.products.product',
             'title': u'图片新闻3',
             'id': 'prdt3',
-            'image':image,            
+            'image':image3,            
             'description': u'图片新闻3'
                         }                                                                           
-                         ]           
-                      }
-                     ]
-    },
-    {
-        'type': 'Folder',
-        'title': u'慈善项目',
-        'id': 'cishanxiangmu',
-        'description': u'慈善项目',
-        'layout': 'tableview',
-        'children': [
-                     {
-            'type': 'my315ok.products.productfolder',
-            'title': u'推荐项目',
-            'id': 'tuijianxiangmu',
-            'description': u'推荐项目'                      
+                         ]                      
                       }                                                                         
                      ]
     },             
     {
         'type': 'Folder',
-        'title': u'爱心捐赠',
-        'id': 'aixinjuanzeng',
-        'description': u'爱心捐赠',
-        'layout': 'tableview',
-        'children': [
-                     {
-            'type': 'Folder',
-            'title': u'爱心捐款',
-            'id': 'aixinjuankuan',
-            'description': u'爱心捐款',
-            'markif':'qyxycjh.policy.interfaces.IAixinjuankuan'            
-                      }                                                                         
-                     ]
+        'title': u'行业资讯',
+        'id': 'hangyezixun',
+        'description': u'行业资讯',
+        'layout': 'tableview'
     },             
     {
         'type': 'Folder',
-        'title': u'爱心公示',
-        'id': 'aixingongshi',
-        'description': u'爱心公示',
-        'layout': 'tableview',
-        'children': [
-                     {
-            'type': 'Folder',
-            'title': u'捐赠公示',
-            'id': 'juanzenggongshi',
-            'description': u'捐赠公示',
-            'layout':'donate_listings',
-            'markif':'qyxycjh.policy.interfaces.IJuanzenggongshi' 
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'阳光屋',
-            'id': 'yigongtuandui',
-            'description': u'阳光屋',
-            'layout': 'tableview',
-                      }                                                                         
-                     ]
+        'title': u'政策法规',
+        'id': 'zhengcefagui',
+        'description': u'政策法规',
+        'layout': 'tableview'
+   
     },              
     {
         'type': 'Folder',
-        'title': u'义工中心',
-        'id': 'yigongzhongxin',
-        'description': u'义工中心',
-        'layout': 'tableview',
-        'children': [
-                     {
-            'type': 'Folder',
-            'title': u'义工活动',
-            'id': 'yigonghuodong',
-            'description': u'义工活动',
-            'layout': 'tableview',
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'义工团队',
-            'id': 'yigongtuandui',
-            'description': u'义工团队',
-            'layout': 'tableview',
-                      }                                                                         
-                     ]
+        'title': u'会员单位',
+        'id': 'huiyuandanwei',
+        'description': u'会员单位',
+        'layout': 'tableview'
+ 
     },              
     {
         'type': 'Folder',
-        'title': u'慈善社区',
-        'id': 'cishanshequ',
-        'description': u'慈善社区',
-        'layout': 'tableview',
-        'children': [
-                     {
-            'type': 'Folder',
-            'title': u'慈善文摘',
-            'id': 'cishanwenzhai',
-            'description': u'慈善文摘',
-            'layout': 'tableview',
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'爱心故事',
-            'id': 'aixingushi',
-            'description': u'爱心故事',
-            'layout': 'tableview',
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'精彩博文',
-            'id': 'jingcaibowen',
-            'description': u'精彩博文',
-            'layout': 'tableview',
-                      },
-                     {
-            'type': 'Folder',
-            'title': u'论坛热帖',
-            'id': 'luntanretie',
-            'description': u'论坛热帖',
-            'layout': 'tableview',
-                      }                                                                         
-                     ]
+        'title': u'媒体报道',
+        'id': 'meitibaodao',
+        'description': u'媒体报道',
+        'layout': 'tableview'        
     },             
-    {
-        'type': 'Folder',
-        'title': u'组织管理',
-        'id': 'zuzhiguanli',
-        'description': u'组织管理',
-        'layout': 'tableview',
-        'children': [
-                     {
-            'type': 'Folder',
-            'title': u'规章制度',
-            'id': 'guizhangzhidu',
-            'description': u'规章制度',
-            'layout': 'tableview',
-                      }, 
-                     {
-            'type': 'Folder',
-            'title': u'政策法规',
-            'id': 'zhengcefagui',
-            'description': u'政策法规',
-            'layout': 'tableview',
-                      }                                                                         
-                     ]
-    },
     {
         'type': 'Folder',
         'title': u'查询集',
@@ -279,103 +162,50 @@ STRUCTURE = [
         'children': [
                      {
                      'type':'Collection',
-                     'title':u'公益新闻',
-                     'description': u'查询集',
-                     'id':'gongyixinwen',
+                     'title':u'协会动态',
+                     'description': u'协会动态查询集',
+                     'id':'xiehuidongtai',
                      'sort_on':'created',
                      'sort_reversed':True,
-                     'query':gongyixinwen,
+                     'query':xiehuidongtai,
                      },
                      {                     
                      'type':'Collection',
-                     'title':u'慈善动态',
-                     'description': u'查询集',
-                     'id':'cishandongtai',
+                     'title':u'行业资讯',
+                     'description': u'行业资讯查询集',
+                     'id':'hangyezixun',
                      'sort_on':'created',
                      'sort_reversed':True,                     
-                     'query':cishandongtai,
+                     'query':hangyezixun,
                      },
                      {                     
                      'type':'Collection',
-                     'title':u'活动通告',
-                     'description': u'活动通告',
-                     'id':'huodongtonggao',
+                     'title':u'会员单位',
+                     'description': u'会员单位查询集',
+                     'id':'huiyuandanwei',
                      'sort_on':'created',
                      'sort_reversed':True,                     
-                     'query':huodongtonggao,
+                     'query':huiyuandanwei,
                      },
                     {
-                     'type':'Collection',
-                     'title':u'慈善文摘',
-                     'description': u'慈善文摘',
-                     'id':'cishanwenzhai',
-                     'sort_on':'created',
-                     'sort_reversed':True,                     
-                     'query':cishanwenzhai,
-                     },                     
-                    {
-                     'type':'Collection',
-                     'title':u'爱心故事',
-                     'description': u'爱心故事',
-                     'id':'aixingushi',
-                     'sort_on':'created',
-                     'sort_reversed':True,                     
-                     'query':aixingushi,
-                     },
-                     {                     
-                     'type':'Collection',
-                     'title':u'精彩博文',
-                     'description': u'精彩博文',
-                     'id':'jingcaibowen',
-                     'sort_on':'created',
-                     'sort_reversed':True,                     
-                     'query':jingcaibowen,
-                     },
-                     {                     
-                     'type':'Collection',
-                     'title':u'论坛热帖',
-                     'description': u'论坛热帖',
-                     'id':'luntanretie',
-                     'sort_on':'created',
-                     'sort_reversed':True,                     
-                     'query':luntanretie,
-                     },                     
-                     {                     
-                     'type':'Collection',
-                     'title':u'义工活动',
-                     'description': u'义工活动',
-                     'id':'yigonghuodong',
-                     'sort_on':'created',
-                     'sort_reversed':True,                     
-                     'query':yigonghuodong,
-                     },
-                     {                     
-                     'type':'Collection',
-                     'title':u'义工团队',
-                     'description': u'义工团队',
-                     'id':'yigongtuandui',
-                     'sort_on':'created',
-                     'sort_reversed':True,                     
-                     'query':yigongtuandui,
-                     },                     
-                     {                     
                      'type':'Collection',
                      'title':u'政策法规',
-                     'description': u'政策法规',
+                     'description': u'最新政策法规',
                      'id':'zhengcefagui',
                      'sort_on':'created',
                      'sort_reversed':True,                     
                      'query':zhengcefagui,
-                     },
-                     {                     
+                     },                     
+                    {
                      'type':'Collection',
-                     'title':u'规章制度',
-                     'description': u'规章制度',
-                     'id':'guizhangzhidu',
+                     'title':u'媒体报道',
+                     'description': u'媒体报道',
+                     'id':'meitibaodao',
                      'sort_on':'created',
                      'sort_reversed':True,                     
-                     'query':guizhangzhidu,
-                     }                                                                                                          
+                     'query':meitibaodao,
+                     }
+                                                                                                                               
                      ]
     },                           
     {
@@ -396,14 +226,14 @@ def isNotCurrentProfile(context):
 def post_install(context):
     """Setuphandler for the profile 'default'
     """
-    if isNotCurrentProfile(context):
-        return
+#     if isNotCurrentProfile(context):
+#         return
     # Do something during the installation of this package
 #     return
     portal = api.portal.get()
-#     members = portal.get('events', None)
-#     if members is not None:
-#         api.content.delete(members)
+    members = portal.get('events', None)
+    if members is not None:
+        api.content.delete(members)
     members = portal.get('news', None)
     if members is not None:
         api.content.delete(members)
@@ -415,18 +245,21 @@ def post_install(context):
 
     for item in STRUCTURE:
         _create_content(item, portal)
-#     set relation
+    
+    import_article(portal)
+    members = portal.get('sqls', None)
+    if members is not None:
+       members.exclude_from_nav = True
+       members.reindexObject()
+    members = portal.get('help', None)
+    if members is not None:
+       members.exclude_from_nav = True
+       members.reindexObject()       
 
-
-def content(context):
-    """Setuphandler for the profile 'content'
-    """
-    if context.readDataFile('policy_content_marker.txt') is None:
-        return
-    pass
-
-
-
+def uninstall(context):
+    """Uninstall script"""
+    # Do something at the end of the uninstallation of this package.
+    
 def _create_content(item, container):
     new = container.get(item['id'], None)
     if not new:
@@ -473,9 +306,38 @@ def _create_content(item, container):
     for subitem in item.get('children', []):
         _create_content(subitem, new)
 
-
+    
 def _constrain(context, allowed_types):
     behavior = ISelectableConstrainTypes(context)
     behavior.setConstrainTypesMode(constrains.ENABLED)
     behavior.setLocallyAllowedTypes(allowed_types)
     behavior.setImmediatelyAddableTypes(allowed_types)
+
+
+article = {"id":'example','title':u'测试文档','content':u'<p>这是一个测试文档</p>'}
+
+def _create_article(article, container):
+    id = str(article['id'])
+
+    new = container.get(id, None)
+    if not new:
+        new = api.content.create(
+            type='Document',
+            container=container,
+            title=article['title'],
+            text = RichTextValue(article['content']),            
+            id=id,
+            safe_id=False)          
+        new.reindexObject()         
+
+def import_article(portal):    
+    "migrate articles to document" 
+
+    containers = list(item['id'] for item in STRUCTURE if item['id'] not in ["sqls","help"])
+
+    for con in containers:
+        container =  portal[con]                                 
+        try:
+            _create_article(article,container)
+        except:
+            continue 

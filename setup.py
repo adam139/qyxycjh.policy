@@ -29,12 +29,7 @@ setup(name='qyxycjh.policy',
           'collective.z3cform.datetimewidget',       
           'five.grok',
           'z3c.jbot',
-          'plone.app.dexterity',          
-          'MySQL-python',
-          'SQLAlchemy',          
-#           'qyxycjh.theme',
           'z3c.caching',
-          'collective.autopermission',
                                                                      
           # -*- Extra requirements: -*-
       ],
