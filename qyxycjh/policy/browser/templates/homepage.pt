@@ -187,7 +187,7 @@
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
     				<li role="presentation" class="active col-xs-4">
     					<a href="#zhengcefagui" aria-controls="zhengcefagui" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target python:p + '/zhengcefagui/@@tableview'">捐赠方式</a>
+    						tal:attributes="data-js-target python:p + '/zhengcefagui/@@tableview'">政策法规</a>
     				</li>
     			</ul>
   					<!-- Tab panes start-->
