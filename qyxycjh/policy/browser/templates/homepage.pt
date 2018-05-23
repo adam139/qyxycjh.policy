@@ -110,7 +110,7 @@
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
 
-    				<li role="presentation" class="active col-xs-4">
+    				<li role="presentation" class="active">
     					<a href="#huiyuandanwei" aria-controls="huiyuandanwei" role="tab" data-toggle="tab"
     						tal:attributes="data-js-target python:p + '/huiyuandanwei/@@tableview'">会员单位</a></li>
   				</ul>
@@ -147,7 +147,7 @@
 			<div role="tabpanel" class="portlet">
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
-    				<li role="presentation" class="active col-xs-4">
+    				<li role="presentation" class="active">
     					<a href="#meitibaodao" aria-controls="meitibaodao" role="tab" data-toggle="tab"
     						tal:attributes="data-js-target python:p + '/meitibaodao/@@tableview'">媒体报道</a>
     				</li>
@@ -185,7 +185,7 @@
 			<div role="tabpanel" class="portlet">
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
-    				<li role="presentation" class="active col-xs-4">
+    				<li role="presentation" class="active">
     					<a href="#zhengcefagui" aria-controls="zhengcefagui" role="tab" data-toggle="tab"
     						tal:attributes="data-js-target python:p + '/zhengcefagui/@@tableview'">政策法规</a>
     				</li>
