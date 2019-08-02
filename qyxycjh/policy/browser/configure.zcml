@@ -82,13 +82,13 @@
 		class=".macros.Macros"/>
  		
 
- 		 		
+<!-- 		 		
    <z3c:widgetTemplate
         mode="input"
  		widget="plone.formwidget.captcha.interfaces.ICaptchaWidget"        
  		layer=".interfaces.IThemeSpecific"
  		template="templates/captcha_input.pt" /> 		
-
+-->
     <include package="z3c.jbot" file="meta.zcml" />
 
     <browser:jbot
