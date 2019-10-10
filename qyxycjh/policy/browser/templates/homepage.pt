@@ -228,7 +228,7 @@
     			<div class="portlet roll_imageportlet">
     				<div class="map_brand">
     					<a href="#" 
-    						tal:attributes="href python:p + '/xiehuidongtai/tupianxinwen/'" class="verticaltext" alt="慈善项目">图片新闻</a></div>   
+    						tal:attributes="href python:p + '/xiehuidongtai/tupianxinwen/'" class="verticaltext">图片新闻</a></div>   
         		<div id="roll_chanpin" tal:attributes="data-root python:p">
         		<div class="roll_image" data-pause="1000" data-step="1" data-speed="37" data-direction="left">
             	<ul class="img"></ul>          
