@@ -13,6 +13,8 @@ from xtcs.policy import _
 from my315ok.products.product import Iproduct
 from collective.diazotheme.bootstrap.browser.homepage import HomepageView as baseview
 from xtcs.policy.browser.interfaces import IThemeSpecific
+from Products.CMFPlone.utils import safe_unicode
+import cgi
 
 # grok.templatedir('templates')
 
