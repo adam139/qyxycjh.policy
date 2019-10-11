@@ -29,7 +29,28 @@ class FrontpageView(baseview):
         self.context = context
         self.request = request
         add_bundle_on_request(self.request, 'homepage-legacy')
-        
+
+    def escape(self, value):
+        """Extended escape"""
+        value = cgi.escape(value, True)
+        return value.replace("'", "&apos;")
+
+    @memoize
+    def seo(self):
+        "seo keywords output"
+        keywords = u"湘潭企业信用促进会,业信用促进会,诚信湘潭"
+        keywords = safe_unicode(keywords)
+        output = u"""<meta name="keywords" content="%s"/>""" % (
+            self.escape(keywords))
+        return output
+
+    @memoize
+    def comments(self):
+        "seo comments output"
+        comments = u"湘潭市企业信用促进会是承担政府职能转移、争取政府购买服务，由全市崇尚诚实信用并以此为准则，有志于推进我市市场主体企业诚信体系建设，争创守合同重信用单位、诚信AAA企业和争当诚信标兵的各类企业及其他经济组织自愿组成，并为企业征信、立信、认证做好服务，已经湘潭市民政局核准注册登记的非盈利性的全市性社会团体法人。"
+        comments = safe_unicode(comments)
+        output = u"""<!--%s-->""" % (self.escape(comments))
+        return output        
     
     def carouselid(self):
         return "carouselid"
