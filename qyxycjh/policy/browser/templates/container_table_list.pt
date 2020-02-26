@@ -4,7 +4,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
-      i18n:domain="my315ok.socialorgnization">        
+      i18n:domain="qyxycjh.policy">        
 
 <body>
 <metal:main fill-slot="main">
