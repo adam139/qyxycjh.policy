@@ -28,8 +28,10 @@ class TestView(unittest.TestCase):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
 
-        for item in STRUCTURE:
-            _create_content(item, portal)         
+#         for item in STRUCTURE:
+#             import pdb
+#             pdb.set_trace()
+#             _create_content(item, portal)         
     def test_sort_on(self):
 # check collection sort_on,sort_reversed etc.        
 

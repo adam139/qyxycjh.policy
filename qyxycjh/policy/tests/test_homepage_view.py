@@ -28,9 +28,9 @@ class TestView(unittest.TestCase):
     def setUp(self):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        for item in STRUCTURE:
-            _create_content(item, portal)         
-        import_article(portal)
+#         for item in STRUCTURE:
+#             _create_content(item, portal)         
+#         import_article(portal)
 # import articles        
 
         self.portal = portal
