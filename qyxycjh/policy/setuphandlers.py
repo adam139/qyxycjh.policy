@@ -43,8 +43,8 @@ image3 = _load_image(3)
 
 
 default = { 'i': 'portal_type',
-           'o': 'plone.app.querystring.operation.string.is',
-            'v': 'Document'}
+           'o': 'plone.app.querystring.operation.selection.any',
+            'v': ['Document','Link']}
 query = []
 defaultpath = {
                     'i': 'path',
@@ -228,8 +228,7 @@ def post_install(context):
     """
 #     if isNotCurrentProfile(context):
 #         return
-    # Do something during the installation of this package
-#     return
+
     portal = api.portal.get()
     members = portal.get('events', None)
     if members is not None:
@@ -241,7 +240,6 @@ def post_install(context):
     if members is not None:
        members.exclude_from_nav = True
        members.reindexObject()
-  
 
     for item in STRUCTURE:
         _create_content(item, portal)
@@ -262,8 +260,8 @@ def uninstall(context):
     
 def _create_content(item, container):
     new = container.get(item['id'], None)
-    if not new:
 
+    if not new:
         new = api.content.create(
             type=item['type'],
             container=container,
@@ -334,7 +332,6 @@ def import_article(portal):
     "migrate articles to document" 
 
     containers = list(item['id'] for item in STRUCTURE if item['id'] not in ["sqls","help"])
-
     for con in containers:
         container =  portal[con]                                 
         try:
