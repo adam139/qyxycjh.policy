@@ -58,7 +58,7 @@ class SitePolicy(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
 
         applyProfile(portal, 'plone.app.contenttypes:default')
-        applyProfile(portal, 'my315ok.products:default') 
+#         applyProfile(portal, 'my315ok.products:default') 
         applyProfile(portal, 'qyxycjh.policy:default')       
 #         applyProfile(portal, 'dexterity.membrane:default')
 #        applyProfile(portal, 'dexterity.membrane.content:example')
@@ -66,10 +66,11 @@ class SitePolicy(PloneSandboxLayer):
 class IntegrationSitePolicy(SitePolicy):      
         
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'my315ok.products:default') 
+        applyProfile(portal, 'plone.app.contenttypes:default')        
+#         applyProfile(portal, 'my315ok.products:default') 
         applyProfile(portal, 'qyxycjh.policy:default')
-        applyProfile(portal, 'plone.app.contenttypes:default')
-#         applyProfile(portal, 'my315ok.socialorgnization:default')
+
+#         applyProfile(portal, 'qyxycjh.policy:default')
 #         applyProfile(portal, 'dexterity.membrane:default')
 #        applyProfile(portal, 'dexterity.membrane.content:example')
 
