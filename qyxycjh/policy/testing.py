@@ -29,46 +29,49 @@ class SitePolicy(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
     
     def setUpZope(self, app, configurationContext):
-        # Load ZCML
+        import Products.membrane
+        self.loadZCML(package=Products.membrane)
+        z2.installProduct(app, 'Products.membrane')
+        import dexterity.membrane
         import qyxycjh.policy
         import plone.app.contenttypes
-#         import collective.diazotheme.bootstrap
         import qyxycjh.theme
         import my315ok.products
         import plone.namedfile
 #         import my315ok.orgnization
         xmlconfig.file('configure.zcml', plone.app.contenttypes, context=configurationContext)
-#         xmlconfig.file('configure.zcml', collective.diazotheme.bootstrap, context=configurationContext)
+        xmlconfig.file('configure.zcml', Products.membrane, context=configurationContext)        
+        xmlconfig.file('configure.zcml', dexterity.membrane, context=configurationContext)
         xmlconfig.file('configure.zcml', my315ok.products, context=configurationContext)
-#         xmlconfig.file('configure.zcml', my315ok.orgnization, context=configurationContext)
         xmlconfig.file('configure.zcml', qyxycjh.theme, context=configurationContext)
         xmlconfig.file('configure.zcml', qyxycjh.policy, context=configurationContext)
         xmlconfig.file('configure.zcml', plone.namedfile, context=configurationContext)        
        
     
     def tearDownZope(self, app):
-        pass
+
         # Uninstall products installed above
 #         z2.uninstallProduct(app, 'Products.PloneFormGen')
 #         z2.uninstallProduct(app, 'Products.TemplateFields')
 #         z2.uninstallProduct(app, 'Products.TALESField')
 #         z2.uninstallProduct(app, 'Products.PythonField')
-#         z2.uninstallProduct(app, 'Products.membrane')        
+        z2.uninstallProduct(app, 'Products.membrane')        
         
     def setUpPloneSite(self, portal):
 
         applyProfile(portal, 'plone.app.contenttypes:default')
-#         applyProfile(portal, 'my315ok.products:default') 
+        applyProfile(portal, 'Products.membrane:default') 
         applyProfile(portal, 'qyxycjh.policy:default')       
-#         applyProfile(portal, 'dexterity.membrane:default')
-#        applyProfile(portal, 'dexterity.membrane.content:example')
+        applyProfile(portal, 'dexterity.membrane:default')
+
 
 class IntegrationSitePolicy(SitePolicy):      
         
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'plone.app.contenttypes:default')        
-#         applyProfile(portal, 'my315ok.products:default') 
+        applyProfile(portal, 'Products.membrane:default') 
         applyProfile(portal, 'qyxycjh.policy:default')
+        applyProfile(portal, 'dexterity.membrane:default')
 
 #         applyProfile(portal, 'qyxycjh.policy:default')
 #         applyProfile(portal, 'dexterity.membrane:default')

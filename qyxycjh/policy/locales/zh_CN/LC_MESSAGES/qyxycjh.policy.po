@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qyxycjh.policy\n"
-"POT-Creation-Date: 2015-02-27 12:15+0000\n"
+"POT-Creation-Date: 2020-02-26 13:06+0000\n"
 "PO-Revision-Date: 2015-02-16 20:49+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: 315ok.org <LL@li.org>\n"
@@ -14,50 +14,143 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: qyxycjh.policy\n"
 
-#: ./browser/member_view.py:255
-msgid "Base information"
-msgstr "基本信息"
+#: ./profiles/default/types/qyxycjh.policy.annualsurveyfolder.xml
+msgid "Annual survey Folder"
+msgstr ""
 
-#: ./browser/member_view.py:279
-msgid "Network information"
-msgstr "网络信息"
+#: ./content/orgnization.py:50
+msgid "Attach your anual report (word, etc)."
+msgstr ""
 
-#: ./browser/register.py:121
-msgid "Please correct errors"
-msgstr "请纠正所示错误"
+#: ./browser/orgnization_survey.py:278
+msgid "Create"
+msgstr ""
 
-#: ./browser/register.py:192
-msgid "Register a sponsor account"
-msgstr "注册一个监管账号"
+#: ./browser/templates/orgnization_annual_survey.pt:26
+#: ./browser/templates/survey_draft_view.pt:31
+msgid "Edit"
+msgstr ""
 
-#: ./profiles/default/actions.xml
-msgid "Register sponsor account"
-msgstr "注册监管账号"
+#: ./configure.zcml:26
+msgid "Installs the qyxycjh.policy package"
+msgstr ""
 
-#: ./browser/member_view.py:267
-msgid "Update password"
-msgstr "更新口令"
+#: ./browser/ajax_view.py:104
+msgid "Not able to send notifications"
+msgstr ""
 
-#: ./browser/register.py:146
-msgid "cancel"
-msgstr "取消"
+#: ./profiles/default/types/qyxycjh.policy.orgnizationsurvey.xml
+msgid "Organization annual credit survey"
+msgstr ""
 
-#: ./profiles/default/actions.xml
-msgid "government organization"
-msgstr "政府部门"
+#: ./profiles/default/types/qyxycjh.policy.orgnizationsurvey.xml
+msgid "Organization annual credit survey reporter"
+msgstr ""
 
-#: ./profiles/default/actions.xml
-msgid "organization"
-msgstr "社会组织"
+#: ./browser/templates/orgnization_annual_survey.pt:36
+#: ./browser/templates/survey_draft_view.pt:41
+msgid "Submit"
+msgstr ""
 
-#: ./browser/register.py:116
-msgid "submit"
-msgstr "创建"
+#: ./configure.zcml:34
+msgid "Uninstall: qyxycjh.policy"
+msgstr ""
 
-msgid "member manage"
-msgstr "会员管理"
+#: ./configure.zcml:34
+msgid "Uninstalls the qyxycjh.policy package"
+msgstr ""
 
-msgid "member properties"
-msgstr "会员设置"
+#: ./profiles/default/types/qyxycjh.policy.annualsurveyfolder.xml
+msgid "a folder contain some organizations's annual credit survey information"
+msgstr ""
 
+#: ./vocabulary.py:13
+msgid "buhege"
+msgstr ""
 
+#: ./content/orgnization.py:41
+msgid "civil agent audit date"
+msgstr ""
+
+#: ./content/orgnization.py:36
+msgid "civil agent comments"
+msgstr ""
+
+#: ./vocabulary.py:11
+msgid "hege"
+msgstr ""
+
+#. Default: "How many levels to list after the top level."
+#: ./browser/interfaces.py:21
+msgid "help_dropdown_depth"
+msgstr ""
+
+#. Default: "WARNING! This is an experimental feature. This is using RAM to store cached template for dropdown menus. Technically every user and every visited section gets its own instance in the ram.cache. Don't enable this if you don't know what this is about. Disable this option if you get unexpected behavior of your global tabs."
+#: ./browser/interfaces.py:28
+msgid "help_enable_caching"
+msgstr ""
+
+#. Default: "With this option enabled, every menu item is clickable. With this option disabled, an item is only clickable when it is not a parent so it has no children."
+#: ./browser/interfaces.py:43
+msgid "help_enable_parent_clickable"
+msgstr ""
+
+#: ./vocabulary.py:12
+msgid "jibenhege"
+msgstr ""
+
+#. Default: "Anonymous User"
+#: ./browser/orgnization_survey.py:273
+msgid "label_anonymous_user"
+msgstr ""
+
+#. Default: "Depth of dropdown menus"
+#: ./browser/interfaces.py:20
+msgid "label_dropdown_depth"
+msgstr ""
+
+#. Default: "Enable caching"
+#: ./browser/interfaces.py:27
+msgid "label_enable_caching"
+msgstr ""
+
+#. Default: "Enable clicking menu items that have children"
+#: ./browser/interfaces.py:41
+msgid "label_enable_parent_clickable"
+msgstr ""
+
+#: ./content/orgnization.py:54
+msgid "last status of the annual survey"
+msgstr ""
+
+#: ./content/orgnization.py:28
+msgid "organization name"
+msgstr ""
+
+#: ./configure.zcml:26
+msgid "qyxycjh.policy"
+msgstr ""
+
+#: ./content/orgnization.py:49
+msgid "report"
+msgstr ""
+
+#: ./content/orgnization.py:32
+msgid "sponsor"
+msgstr ""
+
+#: ./content/orgnization.py:39
+msgid "sponsor audit date"
+msgstr ""
+
+#: ./content/orgnization.py:34
+msgid "sponsor comments"
+msgstr ""
+
+#: ./content/orgnization.py:59
+msgid "the result of annual survey"
+msgstr ""
+
+#: ./content/orgnization.py:44
+msgid "the year for survey"
+msgstr ""

@@ -7,6 +7,12 @@
      which supports Plone's "display" menu.
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
-  <object name="qyxycjh.policy.orgnizationsurvey" meta_type="Dexterity FTI" /> 
-  <object name="qyxycjh.policy.annualsurveyfolder" meta_type="Dexterity FTI" />     
+  <object name="qyxycjh.policy.orgnizationsurvey" meta_type="Dexterity FTI" />
+  <object name="qyxycjh.policy.orgnization" meta_type="Dexterity FTI" />
+  <object name="qyxycjh.policy.governmentorgnization" meta_type="Dexterity FTI" />     
+  <object name="qyxycjh.policy.orgnizationfolder" meta_type="Dexterity FTI" />
+  <object name="qyxycjh.policy.memberfolder" meta_type="Dexterity FTI" />       
+  <object name="qyxycjh.policy.sponsormember" meta_type="Dexterity FTI" />       
+  <object name="qyxycjh.policy.organizationmember" meta_type="Dexterity FTI" />       
+         
 </object>
