@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="qyxycjh.policy">        
+
+<body>
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main" 
+    	tal:define="pview context/@@plone;
+    						 text_to_html nocall:context/@@my315ok-socialorgnization-macros/text_to_html">
+    	<!-- jquery ajax callback function update status notify -->
+    	<div class="row" id="ajax-status-notify" style="display:none;">
+    		<div class="col-xs-12">notify message</div>
+    	</div>
+    	<section class="survey">
+			<div class="page-header">
+           <h3>           	
+           	<span tal:replace="python:context.title">Organization administration</span>
+           	<span class="focuse" tal:content="python:context.year">2011</span>
+           	<span>年度年检报告</span>
+           </h3>
+           <h5 class="text-right"><span class="label">工作流状态：</span><span class="text-warning" i18n:domain="plone" i18n:translate="" tal:content="python:view.workflow_state()">草稿</span></h5>           
+       </div>
+
+       <div class="row action-bar" tal:define="iseditable python:view.isEditable">
+				<div class="col-md-3 col-md-offset-3">
+					<div id="sponsor-agree">
+					<span tal:condition="python:view.canbeAuditBySponsor()">
+						<a  tal:attributes="href python:context.absolute_url() +'/@@ajax_sponsor_agree'" 
+						title="同意" 
+						class="btn btn-primary">同意</a>
+					</span>
+					<form class="ajaxform" style=" display:none;">
+						<div class="form-group">
+							<label for="InputRadio">年检评级</label>
+						<div class="radio">
+							<label>
+    							<input type="radio" name="optionsQuality" id="optionsQuality1" value="hege" checked>合格</label>
+             </div>
+						<div class="radio">
+							<label>
+    							<input type="radio" name="optionsQuality" id="optionsQuality2" value="jibenhege">基本合格</label>
+             </div>
+             </div>                          
+			 			<div class="form-group">
+			 				<label for="InputComment">审核意见</label>
+							<textarea class="form-control" rows="3" tal:attributes="placeholder python:context.sponsor_comments"/>
+						</div>
+						<button class="btn btn-default" name="ok">确定</button>
+						<button class="btn btn-default" name="cancel">取消</button>
+			 		</form>
+		  		</div>					
+				</div>	
+				<div class="col-md-3">
+					<div id="sponsor-reject">
+					<span tal:condition="python:view.canbeAuditBySponsor()">
+						<a  tal:attributes="href python:context.absolute_url() +'/@@ajax_sponsor_reject'" 
+						title="退回给提交人，允许其继续修改，重新提交" 
+						class="btn btn-primary">打回</a>
+					</span>
+					<form class="ajaxform" style=" display:none;">
+			 			<div class="form-group">
+			 				<label for="InputComment">审核意见</label>
+							<textarea class="form-control" rows="3" tal:attributes="placeholder python:context.sponsor_comments"/>
+						</div>
+						<button class="btn btn-default" name="ok">确定</button>
+						<button class="btn btn-default" name="cancel">取消</button>
+			 		</form>
+		  		</div>					
+				</div>
+				<!--   监管单位否决，年检记录 进入不合格 状态。-->
+				<div class="col-md-3">
+					<div id="sponsor-veto">
+					<span tal:condition="python:view.canbeAuditBySponsor()">
+						<a  tal:attributes="href python:context.absolute_url() +'/@@ajax_sponsor_veto'" 
+						title="直接判定为不合格，并转交民政局" 
+						class="btn btn-primary">否决</a>
+					</span>
+					<form class="ajaxform" style=" display:none;">
+						<div class="form-group">
+							<label for="InputRadio">年检评级</label>
+
+						<div class="radio">
+							<label>
+    							<input type="radio" name="optionsQuality" id="optionsQuality4" value="buhege"  checked="checked">不合格</label>
+             </div>
+             </div> 						
+			 			<div class="form-group">
+			 				<label for="InputComment">审核意见</label>
+							<textarea class="form-control" rows="3" tal:attributes="placeholder python:context.sponsor_comments"/>
+						</div>
+						<button class="btn btn-default" name="ok">确定</button>
+						<button class="btn btn-default" name="cancel">取消</button>
+			 		</form>
+		  		</div>					
+				</div>														 
+       </div>
+			<metal:block use-macro="context/@@my315ok-socialorgnization-macros/macros/report-body"/>       
+      </section>
+                
+    </tal:main-macro>
+</metal:main>
+<metal:js fill-slot="javascript_bottom_slot">
+<script>
+	$(document).ready(function(){
+		//click a triger
+		$("#sponsor-agree").on("click","a",function() {
+		//display ajax input form
+		$("#sponsor-agree form").show();
+		//hide submit buttom
+		$("#sponsor-agree span").hide();
+		return false;	
+		});
+	$("#sponsor-agree button[name='ok']").on("click",function() {
+		var action = $("#sponsor-agree span a").attr('href');
+		var formval = $("#sponsor-agree textarea").val();
+		var quality = $("#sponsor-agree [name=optionsQuality]:checked").val();			
+		if (formval ==="") {
+		alert( "must input subject" );
+		return false;
+		}
+		var data = {'subject':formval,'quality':quality};
+		$.post(action,data,function(callback) {
+			$("#sponsor-agree form").hide();
+			$("#sponsor-agree span").show();
+			if (callback['result']) {
+			  location.reload(true);
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;
+	});
+
+	$("#sponsor-agree button[name='cancel']").on("click",function() {
+			$("#sponsor-agree form").hide();
+			$("#sponsor-agree span").show();
+			return false;
+	});	
+	// another button
+		//click a triger
+		$("#sponsor-reject").on("click","a",function() {
+		//display ajax input form
+		$("#sponsor-reject form").show();
+		//hide submit buttom
+		$("#sponsor-reject span").hide();
+		return false;	
+		});
+	$("#sponsor-reject button[name='ok']").on("click",function() {
+		var action = $("#sponsor-reject span a").attr('href');
+		var formval = $("#sponsor-reject textarea").val();	
+		if (formval ==="") {
+		alert( "must input subject" );
+		return false;
+		}
+		var data = {'subject':formval};
+		$.post(action,data,function(callback) {
+			$("#sponsor-reject form").hide();
+			$("#sponsor-reject span").show();
+			if (callback['result']) {
+			  location.reload(true);
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;
+	});
+
+	$("#sponsor-reject button[name='cancel']").on("click",function() {
+			$("#sponsor-reject form").hide();
+			$("#sponsor-reject span").show();
+			return false;
+	});	
+	// another button
+		//click a triger
+		$("#sponsor-veto").on("click","a",function() {
+		//display ajax input form
+		$("#sponsor-veto form").show();
+		//hide submit buttom
+		$("#sponsor-veto span").hide();
+		return false;	
+		});
+	$("#sponsor-veto button[name='ok']").on("click",function() {
+		var action = $("#sponsor-veto span a").attr('href');
+		var formval = $("#sponsor-veto textarea").val();
+		var quality = $("#sponsor-veto [name=optionsQuality]:checked").val();			
+		if (formval ==="") {
+		alert( "must input subject" );
+		return false;
+		}
+		var data = {'subject':formval,'quality':quality};
+		$.post(action,data,function(callback) {
+			$("#sponsor-veto form").hide();
+			$("#sponsor-veto span").show();
+			if (callback['result']) {
+			  location.reload(true);
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;
+	});
+
+	$("#sponsor-veto button[name='cancel']").on("click",function() {
+			$("#sponsor-veto form").hide();
+			$("#sponsor-veto span").show();
+			return false;
+	});			
+			
+}
+)
+</script>
+</metal:js>
+</body>
+</html>
