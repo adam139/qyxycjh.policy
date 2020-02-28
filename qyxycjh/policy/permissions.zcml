@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="qyxycjh.policy">
+
+    <!-- Define new permissions --> 
+  		<include package="collective.autopermission" />   
+    
+    <permission
+			id="qyxycjh.policy.add.anualreport"
+			title="qyxycjh.policy:Add anual report"
+        />
+    <permission
+			id="qyxycjh.policy.review.anualreport"
+			title="qyxycjh.policy:Review anual report"
+        />
+    <permission
+			id="qyxycjh.policy.review.lastlyreport"
+			title="qyxycjh.policy:Review lastly anual report"
+        />                
+
+</configure>
