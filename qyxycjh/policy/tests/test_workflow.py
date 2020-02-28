@@ -93,7 +93,7 @@ class TestView(Base):
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         org = portal['orgnizationfolder1']['orgnization1']
-        wts = wf.simple_publication_workflow
+        wts = wf.credit_survey_workflow
         survey = org['orgnizationsurvey1']
         wts.notifyCreated(survey)
         wt = wf.dexterity_membrane_workflow

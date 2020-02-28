@@ -77,7 +77,7 @@ class Sponsor(object):
 
     def getSponsorBn(self):
         "get sponsor"
-        from my315ok.socialorgnization.content.governmentdepartment import IOrgnization
+        from qyxycjh.policy.content.governmentdepartment import IOrgnization
         orgid = self.context.orgname
         if not orgid:
             return None

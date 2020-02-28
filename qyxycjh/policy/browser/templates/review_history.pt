@@ -16,16 +16,17 @@
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 
         <div class="">
-        	<table class="table table-bordered" summary="Review History"
+        <table class="table table-bordered" summary="Review History"
                i18n:attributes="summary summary_review_history;">
-
+         <thead>
           <tr>
             <th i18n:translate="listingheader_action">Action</th>
             <th i18n:translate="listingheader_performed_by">Performed by</th>
             <th i18n:translate="listingheader_date_and_time">Date and Time</th>
             <th i18n:translate="listingheader_comment">Comment</th>
           </tr>
-
+         </thead>
+         <tbody>
           <metal:block tal:repeat="item history">
             <tr tal:define="odd repeat/item/odd;
                             rhComments item/comments|nothing;
@@ -36,7 +37,6 @@
                   tal:attributes="class string:state-${state}">
                 action
               </td>
-
               <td tal:define="actorid python:item.get('actorid');
                               actor python:item.get('actor');
                               fullname actor/fullname|nothing;
@@ -51,7 +51,6 @@
                       tal:replace="python:fullname or username or actorid"
                 />
               </td>
-
               <td>
                 <span tal:replace="python:context.toLocalizedTime(item['time'],long_format=True)" />
                 <span tal:condition="item/effective_date|nothing">
@@ -59,18 +58,17 @@
                   <span tal:replace="python: context.toLocalizedTime(item['effective_date'],long_format=True)"></span>)
                 </span>
               </td>
-
               <td class="text-left">
                 <span tal:condition="rhComments">
                   <span tal:replace="rhComments"> some comments </span>
                 </span>
-
                 <span tal:condition="not: rhComments" i18n:translate="no_comments">
                   No comments.
                 </span>
               </td>
             </tr>
           </metal:block>
+          </tbody>
         </table>
         </div>
         </div>

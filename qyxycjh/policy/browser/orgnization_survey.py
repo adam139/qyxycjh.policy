@@ -14,13 +14,13 @@ from plone.app.customerize import registration
 from plone.memoize.instance import memoize
 
 from qyxycjh.policy import _
-
+from qyxycjh.policy.content.orgnization import IOrgnization
 from qyxycjh.policy.content.annualsurvey import IOrgnization_annual_survey
-from qyxycjh.policy.content.annualsurveyfolder import IAnnualSurveyFolder
+from qyxycjh.policy.content.orgnizationfolder import IOrgnizationFolder
 from dexterity.membrane.content.member import IMember
-from dexterity.membrane.content.member import IOrganizationMember
-from dexterity.membrane.content.member import ISponsorMember
-from xtshzz.policy.behaviors.org import IOrg
+from qyxycjh.policy.content.member import IOrganizationMember
+from qyxycjh.policy.content.member import ISponsorMember
+from qyxycjh.policy.behaviors.org import IOrg
 
 grok.templatedir('templates') 
 
@@ -29,7 +29,9 @@ class SurveyView(grok.View):
     grok.template('survey_draft_view')
     grok.name('baseview')
     grok.require('zope2.View')
-
+#    
+#    def render(self):
+#        "this is view base class,this function should be override by subclass using template or render."
       
     def update(self):
         # Hide the editable-object border
@@ -77,7 +79,7 @@ class SurveyView(grok.View):
         status = self.workflow_state()
 # checkPermission function must be use Title style permission
         canbe = self.pm().checkPermission("qyxycjh.policy:Review anual report",self.context)
-        return (status == 'pendingsponsor') and canbe
+        return (status == 'pending') and canbe
 
     
     def canbeAuditByAgent(self):
@@ -91,14 +93,14 @@ class SurveyView(grok.View):
         status = self.workflow_state()
 # checkPermission function must be use Title style permission
         canbe = self.pm().checkPermission("qyxycjh.policy:Add anual report",self.context)
-        return (status == 'draft') and canbe and not self.canbeSubmitAgent()
+        return (status == 'private') and canbe and not self.canbeSubmitAgent()
     
     def canbeSubmitAgent(self,sponsor=u"市民政局"):
         status = self.workflow_state()
 # checkPermission function must be use Title style permission
         canbe = self.pm().checkPermission("qyxycjh.policy:Add anual report",self.context)
         spon = self.getSponsorOrg()
-        base = (status == 'draft') and canbe
+        base = (status == 'private') and canbe
         if (spon == sponsor):        
             return base
         else:
@@ -160,8 +162,14 @@ class SurveyView(grok.View):
                
         sponsor = self.getSponsorOrg()
         if not sponsor:return None
-        return "dummy"
-
+        from qyxycjh.policy.content.governmentdepartment import IOrgnization
+        # 获得该政府部门
+        query = {"object_provides":IOrgnization.__identifier__,'Title':sponsor}
+        bs = self.catalog()(query)     
+        if bs: 
+            email = bs[0].getObject().operator
+            return email
+        return None
     
     def email2Title(self,email):
         "根据登陆邮件地址，查询用户名"
@@ -175,7 +183,7 @@ class SurveyView(grok.View):
             return email        
         
     def getOrg(self):
-        "获取该协会的法人名称，协会对象是年检对象的父对象。"
+        "获取协会对象,它是年检对象的父对象。"
         org = aq_parent(self.context)
         return org
              
@@ -185,10 +193,16 @@ class SurveyView(grok.View):
         return self.getOrg().legal_person
         
     def getAgentOrg(self):
-        "获取民政局,为民政局 单位对象指定id:minzhengju,以此简便获取到民政局对象"       
+        "获取民政局,为民政局 单位对象指定id:minzhengju,以此简便获取到民政局对象"
         
-
-        return "dummy"
+        from qyxycjh.policy.content.governmentdepartment import IOrgnization
+        # 获得该政府部门
+        query = {"object_provides":IOrgnization.__identifier__,'id':"minzhengju"}
+        bs = self.catalog()(query)
+#        import pdb
+#        pdb.set_trace()        
+        if bs: return bs[0].Title
+        return None
     
     def getAgentAuditDate(self):
         "获取民政局审核日期"
@@ -203,11 +217,15 @@ class SurveyView(grok.View):
             
     @memoize
     def getAgentOperatorEmail(self):
-        "获取民政局经手人"
-        
-        return "dummy"
+        "获取民政局经手人邮件"
+        from qyxycjh.policy.content.governmentdepartment import IOrgnization
         # 获得该政府部门
-
+        query = {"object_provides":IOrgnization.__identifier__,'id':"minzhengju"}
+        bs = self.catalog()(query)
+        if bs: 
+            email = bs[0].getObject().operator
+            return email
+        return None
     
     def tranVoc(self,value):
         """ translate vocabulary value to title"""
@@ -254,13 +272,10 @@ class SurveyView(grok.View):
 
         workflow = self.wf()
         membership = self.pm()
-
         review_history = []
-
         try:
             # get total history
             review_history = workflow.getInfoFor(context, 'review_history')
-
             if not complete:
                 # filter out automatic transitions.
                 review_history = [r for r in review_history if r['action']]
@@ -269,7 +284,6 @@ class SurveyView(grok.View):
 
             portal_type = context.portal_type
             anon = _(u'label_anonymous_user', default=u'Anonymous User')
-
             for r in review_history:
                 r['type'] = 'workflow'
                 r['transition_title'] = workflow.getTitleForTransitionOnType(
@@ -303,7 +317,7 @@ class SurveyView(grok.View):
     @memoize         
     def getOrgnizationFolder(self):
 
-        topicfolder = self.catalog()({'object_provides': IAnnualSurveyFolder.__identifier__})
+        topicfolder = self.catalog()({'object_provides': IOrgnizationFolder.__identifier__})
 
         canManage = self.pm().checkPermission(permissions.AddPortalContent,self.context)        
         if (len(topicfolder) > 0) and  canManage:
@@ -353,7 +367,7 @@ class SurveyDraftView(SurveyView):
     
        
 class SurveyPendingSponsorView(SurveyView):
-    """survey report view based workflow status: 'pendingsponsor'"""
+    """survey report view based workflow status: 'pending'"""
     grok.template('survey_pending_sponsor_view')
     grok.name('sponsorview')
     grok.require('zope2.View')
@@ -376,4 +390,10 @@ class SurveyPublishedView(SurveyView):
     grok.name('publishedview')
     grok.require('zope2.View')
     
-     
+
+        
+
+
+
+
+                 

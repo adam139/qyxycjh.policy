@@ -1,8 +1,13 @@
 from zope.interface import Interface
 from zope import schema
-
+from plone.formwidget.namedfile.interfaces import INamedImageWidget
 from plone.theme.interfaces import IDefaultPloneLayer
 from qyxycjh.policy import  _
+
+
+class IMinSizeImageWidget(INamedImageWidget):
+    pass
+
 
 class IThemeSpecific(Interface):
     """Marker interface that defines a ZTK browser layer. We can reference

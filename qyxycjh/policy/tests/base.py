@@ -1,8 +1,17 @@
 #-*- coding: UTF-8 -*-
 import unittest
+import os
 from qyxycjh.policy.testing import POLICY_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, setRoles
+from plone import namedfile
 from plone.namedfile.file import NamedImage
+from Products.CMFCore.utils import getToolByName
+
+def getFile(filename):
+    """ return contents of the file with the given name """
+    filename = os.path.join(os.path.dirname(__file__), filename)
+    return open(filename, 'r')
+
 
 class Base(unittest.TestCase):
     layer = POLICY_INTEGRATION_TESTING
@@ -15,14 +24,20 @@ class Base(unittest.TestCase):
         portal.invokeFactory('qyxycjh.policy.orgnizationfolder', 'orgnizationfolder1')
         portal['orgnizationfolder1'].invokeFactory('qyxycjh.policy.orgnization',
                                                     'orgnization1',
-                                                   title="orgnization1")                                                     
+                                                   title="orgnization1",
+                                                   legal_person=u"张三",
+                                                   supervisor=u"企业信用促进会",
+                                                   register_code="283832nb")                                                     
         portal['orgnizationfolder1'].invokeFactory('qyxycjh.policy.governmentorgnization',
                                                     'sponsororgnization1',
-                                                   title="sponsororgnization1") 
+                                                   title="sponsororgnization1",
+                                                   description=u"企业信用促进会",
+                                                   operator="17@qq.com") 
         
         portal['orgnizationfolder1']['orgnization1'].invokeFactory('qyxycjh.policy.orgnizationsurvey',
                                                     'orgnizationsurvey1',
-                                                   title="orgnizationsurvey1")
+                                                   title="orgnizationsurvey1",
+                                                   sponsor="sponsororgnization1")
         portal['orgnizationfolder1']['orgnization1'].invokeFactory('qyxycjh.policy.orgnizationsurvey',
                                                     'orgnizationsurvey2',
                                                    title="orgnizationsurvey2")              
@@ -81,7 +96,7 @@ class Base(unittest.TestCase):
                                               orgname='orgnization1',                                              
                                               description="I am member1")
         portal['memberfolder1'].invokeFactory('qyxycjh.policy.sponsormember', 'sponsor1',
-                                              email="17@qq.com",
+                                              email="100@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
                                               title=u"tangyuejun",
@@ -90,9 +105,13 @@ class Base(unittest.TestCase):
                                               homepae='http://315ok.org/',
                                               orgname='sponsororgnization1',                                              
                                               description="I am sponsor1") 
-       
+        data = getFile('demo.txt').read()
+        item = portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        item.image = NamedImage(data, 'image/gif', u'image.gif')
+        item.report = namedfile.NamedBlobFile(data, filename=u"demo.txt")       
         self.portal = portal
         self.member1 = portal['memberfolder1']['member1']
         self.sponsor1 = portal['memberfolder1']['sponsor1']
+        self.wf = getToolByName(portal, 'portal_workflow')
                 
  

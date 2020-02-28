@@ -6,6 +6,14 @@
         <indexed_attr value="email"/>
     </index>   
     <column value="email"/>
-
-
+    
+    <index name="orgnization_legalPerson" meta_type="FieldIndex">
+        <indexed_attr value="orgnization_legalPerson"/>
+    </index>
+    <column value="orgnization_legalPerson"/>
+    
+    <index name="orgnization_supervisor" meta_type="FieldIndex">
+        <indexed_attr value="orgnization_supervisor"/>
+    </index>
+    <column value="orgnization_supervisor"/>
 </object>

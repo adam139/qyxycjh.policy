@@ -7,14 +7,17 @@
     i18n_domain="qyxycjh.policy">
     
 
-  <includeDependencies package="." />
- 
+    <includeDependencies package="." />
+    <include file="permissions.zcml" />
     <i18n:registerTranslations directory="locales" />
     <include package=".browser" />
     <include package=".behaviors" />         
     <include package=".portlet" />
     <grok:grok package="." /> 
-  <!-- -*- cusomize indexer -*- -->
+    <!-- -*- cusomize indexer -*- -->
+
+   <adapter name="orgnization_legalPerson" factory=".indexer.indexer_orgnization_legalperson"/>
+   <adapter name="orgnization_supervisor" factory=".indexer.indexer_orgnization_supervisor"/>
 
     <subscriber
          for="qyxycjh.policy.content.member.ISponsorMember

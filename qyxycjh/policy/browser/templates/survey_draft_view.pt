@@ -9,8 +9,7 @@
 <body>
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main" 
-    	tal:define="pview context/@@plone;
-    						 text_to_html nocall:context/@@my315ok-socialorgnization-macros/text_to_html">
+    	tal:define="pview context/@@plone">
     	<!-- jquery ajax callback function update status notify -->
     	<div class="row" id="ajax-status-notify" style="display:none;">
     		<div class="col-xs-12">notify message</div>
@@ -20,9 +19,13 @@
            <h3>           	
            	<span tal:replace="python:context.title">Organization administration</span>
            	<span class="focuse" tal:content="python:context.year">2011</span>
-           	<span>年度年检报告</span>
+           	<span>年度信用报告</span>
            </h3>
-           <h5 class="text-right"><span class="label">工作流状态：</span><span class="text-warning" i18n:domain="plone" i18n:translate="" tal:content="python:view.workflow_state()">草稿</span></h5>           
+           <h5 class="text-right">
+           	<span class="label">工作流状态：</span>
+           	<span class="text-warning" i18n:domain="plone" 
+           		i18n:translate="" tal:content="python:view.workflow_state()">草稿</span>
+           	</h5>           
        </div>
       
        <div class="row action-bar" tal:define="iseditable python:view.isEditable">
@@ -53,28 +56,9 @@
 						<button class="btn btn-default" name="cancel">取消</button>
 			 		</form>
 		  		</div>					
-				</div>	
-				<div class="col-md-3">
-					<div id="submit2agent">
-					<span tal:condition="python:view.canbeSubmitAgent()">
-						<a  tal:attributes="href python:context.absolute_url() +'/@@ajax_submit_agent'" 
-						title="Submit"  
-						i18n:attributes="title"
-						class="btn btn-primary"
-						>提交民政局审核</a>
-					</span>
-					<form class="ajaxform" style=" display:none;">
-			 			<div class="form-group">
-			 				<label for="InputComment">邮件标题</label>
-							<textarea class="form-control" rows="3" tal:attributes="placeholder python:context.sponsor_comments"/>
-						</div>
-						<button class="btn btn-default" name="ok">确定</button>
-						<button class="btn btn-default" name="cancel">取消</button>
-			 		</form>
-		  		</div>					
 				</div>									 
-       </div>
-			<metal:block use-macro="context/@@my315ok-socialorgnization-macros/macros/report-body"/> 
+            </div>
+			<metal:block use-macro="context/@@qyxycjh-policy-macros/macros/report-body"/> 
       </section>                
     </tal:main-macro>
 </metal:main>
@@ -108,46 +92,12 @@
 		},'json');
 		return false;
 	});
-
 	$("#submit2sponsor button[name='cancel']").on("click",function() {
 			$("#submit2sponsor form").hide();
 			$("#submit2sponsor span").show();
 			return false;
 	});	
-	// another button
-		//click a triger
-		$("#submit2agent").on("click","a",function() {
-		//display ajax input form
-		$("#submit2agent form").show();
-		//hide submit buttom
-		$("#submit2agent span").hide();
-		return false;	
-		});
-	$("#submit2agent button[name='ok']").on("click",function() {
-		var action = $("#submit2agent span a").attr('href');
-		var formval = $("#submit2agent textarea").val();
-		if (formval ==="") {
-		alert( "must input subject" );
-		return false;
-		}
-		var data = {'subject':formval};
-		$.post(action,data,function(callback) {
-			$("#submit2agent form").hide();
-			$("#submit2agent span").show();
-			if (callback['result']) {
-			  location.reload(true);
-				$("#ajax-status-notify div").html(callback['message']);
-				$("#ajax-status-notify").show();
-			}				
-		},'json');
-		return false;
-	});
-
-	$("#submit2agent button[name='cancel']").on("click",function() {
-			$("#submit2agent form").hide();
-			$("#submit2agent span").show();
-			return false;
-	});			
+			
 }
 )
 </script>

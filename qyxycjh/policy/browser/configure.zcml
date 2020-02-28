@@ -65,7 +65,13 @@
  		layer=".interfaces.IThemeSpecific" 
         permission="zope2.View"
         />
-    
+    <browser:viewlet
+        name="qyxycjh.policy_reviewhistory"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+        class=".review_history.ReviewViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View"
+       />    
     <browser:page
         name="batchnavigation"
         for="*"

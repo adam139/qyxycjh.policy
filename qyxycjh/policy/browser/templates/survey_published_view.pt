@@ -8,9 +8,7 @@
 
 <body>
 <metal:main fill-slot="main">
-    <tal:main-macro metal:define-macro="main" 
-    	tal:define="pview context/@@plone;
-    						 text_to_html nocall:context/@@my315ok-socialorgnization-macros/text_to_html">
+    <tal:main-macro metal:define-macro="main">
     	<!-- jquery ajax callback function update status notify -->
     	<div class="row" id="ajax-status-notify" style="display:none;">
     		<div class="col-xs-12">notify message</div>
@@ -20,24 +18,14 @@
            <h3>           	
            	<span tal:replace="python:context.title">Organization administration</span>
            	<span class="focuse" tal:content="python:context.year">2011</span>
-           	<span>年度年检报告</span>
+           	<span>年度企业信用报告</span>
            </h3>
-           <h5 class="text-right"><span class="label">工作流状态：</span><span class="text-info" i18n:domain="plone" i18n:translate="" tal:content="python:view.workflow_state()">草稿</span></h5>           
+           <h5 class="text-right">
+           	<span class="label">工作流状态：</span>
+           	<span class="text-info" i18n:domain="plone" i18n:translate="" tal:content="python:view.workflow_state()">草稿</span>
+           </h5>           
        </div>
-       <!--
-		<span id="showtitle" tal:content="context/title"/>
-		<a href="javascript:void(0)" onclick="outdisplaytitle()">
-			<span id="edittitle" class="edit" i18n:translate="edit">edit</span>
-		</a>       	
-       <div id="modifytitle" tal:attributes="modifytitle string:${context/absolute_url}/@@modify-title">
-			 <form id="modifytitleform" style=" display:none;">
-				<textarea tal:content="context/title"/>
-				<button name="ok" i18n:translate="ok">确定</button>
-				<button name="cancel" i18n:translate="cancel">取消</button>
-			 </form>
-		  </div> -->
        <div class="row action-bar" tal:define="iseditable python:view.isEditable">
-
 				<div class="col-md-3 col-md-offset-3">
 					<div id="agent-edit">
 					<span tal:condition="python:view.canbeRetract()">
@@ -72,10 +60,8 @@
 		  		</div>			  						
 				</div>												 
        </div>
-			<metal:block use-macro="context/@@my315ok-socialorgnization-macros/macros/report-body"/>
-			<!--	<metal:block use-macro="context/@@my315ok-socialorgnization-macros/macros/report-body-hidden-attach"/>	 -->		
-      </section>
-         
+	   <metal:block use-macro="context/@@qyxycjh-policy-macros/macros/report-body"/>		
+      </section>         
     </tal:main-macro>
 </metal:main>
 <metal:js fill-slot="javascript_bottom_slot">

@@ -3,15 +3,15 @@ from five import grok
 from zope import schema
 from zope.interface import Interface
 import datetime
-
+from plone.namedfile.interfaces import IImageScaleTraversable
+from plone.namedfile.field import NamedBlobImage
 from plone.directives import form, dexterity
 from plone.app.dexterity.behaviors.metadata import IBasic
 from collective import dexteritytextindexer
-
 from qyxycjh.policy import _
 
 
-class IOrgnization(form.Schema,IBasic):
+class IOrgnization(form.Schema,IImageScaleTraversable):
     """
     orgnization content type
     """
@@ -38,7 +38,11 @@ class IOrgnization(form.Schema,IBasic):
                 default=u"register code"),
             description=_("help_register_code",
                 default=u"A code identifying this organization."),
-            required=False)    
+            required=False)
+#   公章     
+    image = NamedBlobImage(title=_(u"public sign"),
+                             description=_(u"a image of the public sign"),
+                             required=False,)         
 # 主管单位    
     supervisor = schema.TextLine(title=_(u"supervisor organization"),
                              default=u"",
