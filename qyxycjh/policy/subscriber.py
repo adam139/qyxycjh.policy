@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from dexterity.membrane.content.member import IMember
-from my315ok.socialorgnization.content.governmentdepartment import IOrgnization
+from qyxycjh.policy.content.governmentdepartment import IOrgnization
 from Products.CMFCore.utils import getToolByName
 from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
 from zope.component import getMultiAdapter
@@ -22,7 +22,6 @@ def updateSponsorOperator(obj, event):
     "创建sponsormember对象时，触发，更新该sponsormember关联的governmentorganization的operator记录"
 
     catalog = getToolByName(obj, 'portal_catalog')
-
     bns = catalog.unrestrictedSearchResults({'object_provides': IOrgnization.__identifier__,
                                              'id': obj.orgname})
     if bns:
