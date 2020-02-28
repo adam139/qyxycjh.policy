@@ -9,6 +9,7 @@ from plone.directives import form, dexterity
 from plone.app.dexterity.behaviors.metadata import IBasic
 from collective import dexteritytextindexer
 from qyxycjh.policy import _
+from qyxycjh.policy.utility import imageSizeConstraint
 
 
 class IOrgnization(form.Schema,IImageScaleTraversable):
@@ -42,6 +43,7 @@ class IOrgnization(form.Schema,IImageScaleTraversable):
 #   公章     
     image = NamedBlobImage(title=_(u"public sign"),
                              description=_(u"a image of the public sign"),
+                             constraint=imageSizeConstraint,
                              required=False,)         
 # 主管单位    
     supervisor = schema.TextLine(title=_(u"supervisor organization"),
@@ -53,6 +55,7 @@ class IOrgnization(form.Schema,IImageScaleTraversable):
         description=u'',
         required=False,
     )
+
 
 @form.default_value(field=IOrgnization['passDate'])
 def passDefaultValue(data):

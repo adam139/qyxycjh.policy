@@ -6,8 +6,9 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.namedfile.field import NamedBlobImage
 from plone.directives import form, dexterity
 from collective import dexteritytextindexer
-
+from qyxycjh.policy.utility import imageSizeConstraint
 from qyxycjh.policy import _
+
 
 class IOrgnization(form.Schema,IImageScaleTraversable):
     """
@@ -35,4 +36,5 @@ class IOrgnization(form.Schema,IImageScaleTraversable):
 #   公章     
     image = NamedBlobImage(title=_(u"public sign"),
                              description=_(u"a image of the public sign"),
+                             constraint=imageSizeConstraint,
                              required=False,)        

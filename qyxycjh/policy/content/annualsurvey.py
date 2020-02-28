@@ -2,19 +2,14 @@
 from five import grok
 from zope import schema
 from zope.interface import Interface
-from zope.schema.interfaces import IContextSourceBinder
-from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 import datetime
-
 from plone.directives import form, dexterity
 from plone.app.dexterity.behaviors.metadata import IBasic
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from plone.namedfile.interfaces import IImageScaleTraversable
 from collective import dexteritytextindexer
-from my315ok.socialorgnization.registrysource import DynamicVocabulary
+from qyxycjh.policy.utility import fileSizeConstraint
 from qyxycjh.policy import _
-
-
 
     
 class IOrgnization_annual_survey(form.Schema,IBasic):
@@ -46,6 +41,7 @@ class IOrgnization_annual_survey(form.Schema,IBasic):
 #年检报告书    
     report = NamedBlobFile(title=_(u"report"),
         description=_(u"Attach your anual report (word, etc)."),
+        constraint=fileSizeConstraint,
         required=True
     )
 # 上次工作流状态
