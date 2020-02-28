@@ -50,12 +50,12 @@ class TestView(Base):
         app = self.layer['app']
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
-        wt = wf.simple_publication_workflow
+        wt = wf.credit_survey_workflow
         org = portal['orgnizationfolder1']['orgnization1']
         dummy = org['orgnizationsurvey1']
         wf.notifyCreated(dummy)
         chain = wf.getChainFor(dummy)
-        self.failUnless(chain[0] == 'simple_publication_workflow')
+        self.failUnless(chain[0] == 'credit_survey_workflow')
         review_state = wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state, 'private')
         wf.doActionFor(dummy, 'submit', comment='submit to sponsor')
@@ -129,11 +129,11 @@ class TestView(Base):
 
         self.assertEqual(
             joe_member.getRolesInContext(self.layer['portal']),
-            ['Authenticated']
+            ['Organization', 'Authenticated']
         )
         self.assertEqual(
             joe_member.getRolesInContext(survey),
-            ['Authenticated']
+            ['Organization', 'Authenticated']
         )
         self.assertEqual(sorted(joe_member.getRolesInContext(dummy)),
-                         ['Authenticated', u'Creator', u'Editor', u'Reader'])
+                         ['Authenticated', u'Creator', u'Editor','Organization', u'Reader'])

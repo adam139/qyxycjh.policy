@@ -8,7 +8,7 @@ from zope.component import adapter
 from zope.interface import implementer
 
 
-DEFAULT_ORG_ROLES = ['Social Organization', 'Reviewer']
+DEFAULT_ORG_ROLES = ['Organization']
 DEFAULT_SPR_ROLES = ['Sponsor', 'Reviewer']
 
 
