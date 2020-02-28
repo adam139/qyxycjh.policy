@@ -65,13 +65,17 @@ class TestView(Base):
 
     def test_ajax_member_state(self):
         request = self.layer['request']
+        portal = self.portal
+        wf = getToolByName(portal, 'portal_workflow')
+        dummy = portal['memberfolder1']['member2']
+        review_state = wf.getInfoFor(dummy, 'review_state')
         keyManager = getUtility(IKeyManager)
         secret = keyManager.secret()
         auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
         request.form = {
             '_authenticator': auth,
-            'state': 'pending',  # new created member initial status
-            'id': 'member1',
+            'state': review_state,  # new created member initial status
+            'id': 'member2',
         }
 
         view = self.portal['memberfolder1'].restrictedTraverse(

@@ -17,7 +17,8 @@ from zope.component import getMultiAdapter
 from zope.lifecycleevent import ObjectAddedEvent
 
 import json
-
+import logging
+logger = logging.getLogger("member notify")
 
 grok.templatedir('templates')
 
@@ -358,11 +359,16 @@ class memberstate(grok.View):
                 try:
                     response = registration.registeredNotify(obj.email)
                 except BaseException:
-                    raise
+                    logger.info("send email failed")
+                    pass
                 # is sponsor member?  send event update relative government
                 # department update operator
                 if ISponsorMember.providedBy(obj):
-                    event.notify(ObjectAddedEvent(obj, self.context, obj.id))
+                    try:
+                        event.notify(ObjectAddedEvent(obj, self.context, obj.id))
+                    except:
+                        logger.info("update sponsor operator failed")
+                        pass
                 result = True
             except BaseException:
                 result = False
