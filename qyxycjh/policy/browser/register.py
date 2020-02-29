@@ -12,7 +12,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _p
 from Products.CMFPlone.utils import _createObjectByType
 from Products.statusmessages.interfaces import IStatusMessage
-from qyxycjh.policy import MessageFactory as _
+from qyxycjh.policy import _
 from qyxycjh.policy.browser.interfaces import IThemeSpecific
 from z3c.form import button
 from z3c.form import field
