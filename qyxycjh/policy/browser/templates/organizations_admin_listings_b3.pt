@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="my315ok.socialorgnization">        
+
+<body>
+	<div metal:fill-slot="main">
+		<div id="ajaxsearch" style="display: none" 
+			tal:attributes="data-ajax-target python:portal_url + '/@@org_admin_list'"></div>
+
+        <!--主页面内容start-->
+        <div class="container">
+				<div class="page-header">
+           <h3 i18n:translate="">Organization administration</h3>           
+       	</div>
+       	<div class="row action-bar">
+			<div class="col-xs-6 col-xs-offset-6" tal:define="confolder python:view.getOrgnizationFolder()">
+				<span class="overlay" tal:condition="confolder">
+					<a tal:attributes="href  python:confolder + '/++add++qyxycjh.policy.orgnization'" 
+						title="Add organization"
+						i18n:attributes="title"
+						class="btn btn-primary" 
+						i18n:translate="">Add organization</a>
+				</span>
+			</div>	       	
+       	</div>        	
+        	
+            <!--默认搜索条件start-->
+         <div class="hidden">                     	                
+                <input type="hidden" value="orgnization_passDate" id="solrSortColumn">
+                <input type="hidden" value="reverse" id="solrSortDirection">              
+         </div>
+            <!--默认搜索条件end-->
+
+            <!--排序及快速翻页 start-->
+            <div class="event_list_search_paixu row">
+            	 <!--搜索选择结果排序 start-->
+                <div id="eventListSort" class="paixu col-xs-12 col-sm-9">
+                    <span>排序：</span>                   
+                    <a  id="startTimestamp" href="javascript:void(0)"><span data-name="orgnization_passDate" class="glyphicon glyphicon-arrow-up">批准时间</span></a><!-- 开始时间 -->
+                    <a  id="publishTimestamp" href="javascript:void(0)"><span data-name="created" class="glyphicon glyphicon-arrow-down">发布时间</span></a>
+                </div>
+                <!-- 排序 end --> 
+                <!--快速翻页 start-->
+                <div class="col-xs-12 col-sm-3">
+                <ul id="fastPageList" class="pager">
+                	<li><a href="javascript:void(0)"></a></li>
+                	<li><span>1/16</span></li>
+                	<li><a href="javascript:searchEvent(2,10)"></a></li>
+                </ul>
+                </div>
+                <!--快速翻页 End-->                  
+            </div>           
+            <!--排序及快速翻页 end-->
+            
+            <!--搜索结果列表 start-->
+            <div  class="row">
+            	<div class="event_list_search_list">
+            		<table class="table table-striped table-bordered table-condensed listing">
+            			<thead>
+            				<tr>
+            					<th class="col-md-1 text-center" i18n:translate="">Number</th>
+            					<th class="col-md-2 text-left" i18n:translate="">organization name</th>
+            					<th class="col-md-1" i18n:translate="">register code</th>
+            					<th class="col-md-3 text-left" i18n:translate="">address</th>
+            					<th class="col-md-2 text-left" i18n:translate="">sponsor</th>
+            					<th class="col-md-1 text-left" i18n:translate="">legal person</th>
+            					<th class="col-md-2" i18n:translate="">pass date</th>
+            				</tr>
+            			</thead>
+            			<tbody id="searchResultDiv">
+            				<tr>
+            					<td class="col-md-1">1</td>
+            					<td class="col-md-2">市宝庆商会</td>
+            					<td class="col-md-1">8341</td>
+            					<td class="col-md-3">建设北路55号</td>
+            					<td class="col-md-2">市民政局</td>
+            					<td class="col-md-1">王明</td>
+            					<td class="col-md-2">2013-07-13</td>            					
+            				</tr>            				
+            			</tbody>            			
+            		</table>
+						</div>
+					</div>
+            <!--搜索结果列表 End-->
+            <!--分页 start-->
+           <nav class="row">          	
+            <ul id="bottomPageId" class="col-xs-11 pagination col-sm-3 center">
+            	<li><a class="page" href="javascript:void(0)">首页</a></li>
+            	<li><a class="page" href="javascript:void(0)">上一页</a></li>
+            	<li><a class="page_over num" href="#">1</a></li>
+            	<li><a class="page num" href="javascript:searchEvent(2,10)">2</a></li>
+            	<li><a class="page num" href="javascript:searchEvent(3,10)">3</a></li>
+            	<li><a class="page" href="javascript:searchEvent(2,10)">下一页</a></li>
+            	<li><a class="page" href="javascript:searchEvent(16,10)">末页</a></li>
+            </ul>
+				  </nav>
+            <!--分页 end-->				  
+		</div>
+        <!--主页面内容 End-->		
+	</div>
+  <metal:js fill-slot="javascript_bottom_slot">
+	<script type="text/javascript"
+		tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+     tal:attributes="src string:${navroot}/++resource++my315ok.socialorgnization/ajaxsearch.min.js">	  	
+	</script>	
+	</metal:js>
+</body>
+</html>
