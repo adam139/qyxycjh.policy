@@ -17,10 +17,6 @@ import os
 import unittest
 
 
-def getFile(filename):
-    """ return contents of the file with the given name """
-    filename = os.path.join(os.path.dirname(__file__), filename)
-    return open(filename, 'r')
 
 
 class TestView(Base):
@@ -72,19 +68,21 @@ class TestView(Base):
         comment = wf.getInfoFor(dummy, 'comments')
         self.assertEqual(comment, 'sponsor has been agree')
 
-# sponsor reject
-        wf.doActionFor(dummy, 'reject', comment='object has been reject')
+# sponsor retract to owner
+        wf.doActionFor(dummy, 'retract', comment='owner retract to self')
         review_state = wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state, 'private')
 # owner again submit to sponsor
         wf.doActionFor(dummy, 'submit', comment='submit to sponsor')
         review_state = wf.getInfoFor(dummy, 'review_state')
-        self.assertEqual(review_state, 'pending')
-
-# owner retract to owner
-        wf.doActionFor(dummy, 'retract', comment='owner retract to self')
+        self.assertEqual(review_state, 'pending')        
+# sponsor reject
+        wf.doActionFor(dummy, 'reject', comment='object has been reject')
         review_state = wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state, 'private')
+
+
+
 
 
 
