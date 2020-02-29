@@ -48,7 +48,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.uninstall"
       />
-
+   <genericsetup:upgradeStep
+      title="fix collection query condition"
+      description="fix collection query condition"
+      source="1001"
+      destination="1002"
+      handler="qyxycjh.policy.setuphandlers.fixCollectionQueryCon"
+      profile="qyxycjh.policy:default"/>
+  
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="qyxycjh.policy-hiddenprofiles" />
