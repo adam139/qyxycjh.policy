@@ -4,8 +4,9 @@ from qyxycjh.policy.testing import POLICY_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, setRoles
 from plone.namedfile.file import NamedImage
 from qyxycjh.policy.tests.base import Base
+from plone.namedfile.testing import NamedFileTestLayer
 
-class Allcontents(Base):
+class Allcontents(Base,NamedFileTestLayer):
     layer = POLICY_INTEGRATION_TESTING   
 
                 
@@ -21,6 +22,6 @@ class Allcontents(Base):
 
     def test_item_types(self):
         self.assertEqual(self.member1.email,'12@qq.com')
-        self.assertEqual(self.sponsor1.email,'17@qq.com')
+        self.assertEqual(self.sponsor1.email,'100@qq.com')
            
         
