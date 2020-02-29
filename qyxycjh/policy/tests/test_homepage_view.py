@@ -10,29 +10,15 @@ from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
     TEST_USER_PASSWORD, setRoles
 from plone.testing.z2 import Browser
 import unittest
-from plone.namedfile.file import NamedBlobImage,NamedBlobFile,NamedImage
-import os
-from plone.app.textfield.value import RichTextValue
-
 from zope.component import getUtility
 
-
-def getFile(filename):
-    """ return contents of the file with the given name """
-    filename = os.path.join(os.path.dirname(__file__), filename)
-    return open(filename, 'r')
 
 class TestView(unittest.TestCase):
     
     layer = FunctionalTesting
     def setUp(self):
         portal = self.layer['portal']
-        setRoles(portal, TEST_USER_ID, ('Manager',))
-#         for item in STRUCTURE:
-#             _create_content(item, portal)         
-#         import_article(portal)
-# import articles        
-
+        setRoles(portal, TEST_USER_ID, ('Manager',))     
         self.portal = portal
     
     def test_front(self):
@@ -45,8 +31,7 @@ class TestView(unittest.TestCase):
 
         import transaction
         transaction.commit()
-        import pdb
-        pdb.set_trace()
+
         obj = portal.absolute_url() + '/@@index.html'    
         browser.open(obj)
  
