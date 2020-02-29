@@ -21,9 +21,18 @@ class HiddenProfiles(object):
             'qyxycjh.policy:uninstall',
         ]
 
+def fixCollectionQueryCon(context):
+    "Fix handler for update collection query condition"
 
+    default = { 'o': 'plone.app.querystring.operation.selection.any',
+            'v': ['Document','Link']}    
+    cols = api.content.find(context=api.portal.get(), portal_type='Collection')
+    for col in cols:
+        obj = col.getObject()
+        if obj.query[0]['i'] =='portal_type' and obj.query[0]['v'] =='Document' :
+            obj.query[0].update(default)
+    return
 # for image field data
-
 def _load_image(slider):
     from plone.namedfile.file import NamedImage
     import os
@@ -255,9 +264,10 @@ def post_install(context):
        members.reindexObject()
        
     for item in STRUCTURE:
+        if item['id']=='tupianxinwen':continue  # avoid to add sample images to product site
         _create_content(item, portal)
-    
-    import_article(portal)
+    #comment the following line to avoid add sample article to product site    
+#     import_article(portal)
     members = portal.get('sqls', None)
     if members is not None:
        members.exclude_from_nav = True
