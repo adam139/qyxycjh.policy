@@ -70,19 +70,8 @@ class MemberFolderView(grok.View):
 
     def _getUserData(self, userId):
         "get user role lists from user id"
-        from Products.membrane.config import TOOLNAME
-        user_catalog = getToolByName(self.context, TOOLNAME, None)
-        if user_catalog is None:
-#             logger.warn("membrane_tool not found.")
-            return ''        
-        
-        kw = dict(exact_getUserName=email)
-        users = user_catalog.unrestrictedSearchResults(**kw)
-        if bool(users):
-            member = users[0]
-        else:
-            return ''
-        eliminator = ["Authenticated", "Reviewer"]
+        member = self.pm().getMemberById(userId)
+        eliminator = ["Authenticated"]
         roles = [self.tranVoc(role, domain="plone")
                  for role in member.getRoles() if role not in eliminator]
         roles = ','.join(roles)
