@@ -16,14 +16,13 @@ from qyxycjh.policy.tests.base import Base
 class TestView(Base):
     
     layer = FunctionalTesting
-
   
     def test_data(self):
 
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         wt = wf.credit_survey_workflow
-        org = portal['orgnizationfolder1']['orgnization1']
+        org = portal['organizations']['orgnization1']
         dummy = org['orgnizationsurvey1']
         wf.notifyCreated(dummy)
         chain = wf.getChainFor(dummy)

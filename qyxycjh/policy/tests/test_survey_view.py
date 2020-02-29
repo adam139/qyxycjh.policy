@@ -35,7 +35,7 @@ class TestProductlView(Base):
 
         }
 # Look up and invoke the view via traversal
-        context = self.portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        context = self.portal['organizations']['orgnization1']['orgnizationsurvey1']
         view = context.restrictedTraverse('@@ajax_submit_sponsor')
         result = view()
         self.assertEqual(json.loads(result)['result'], True) 
@@ -50,7 +50,7 @@ class TestProductlView(Base):
             'subject': u"某处有问题",
         }
 # Look up and invoke the view via traversal
-        context = self.portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        context = self.portal['organizations']['orgnization1']['orgnizationsurvey1']
         self.wf.doActionFor(
             context,
             'submit',
@@ -70,7 +70,7 @@ class TestProductlView(Base):
             'quality':"hege"
         }
 # Look up and invoke the view via traversal
-        context = self.portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        context = self.portal['organizations']['orgnization1']['orgnizationsurvey1']
         self.wf.doActionFor(
             context,
             'submit',
@@ -91,7 +91,7 @@ class TestProductlView(Base):
             'subject': u"基本可以",
         }
 # Look up and invoke the view via traversal
-        context = self.portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        context = self.portal['organizations']['orgnization1']['orgnizationsurvey1']
         self.wf.doActionFor(
             context,
             'submit',
@@ -112,7 +112,7 @@ class TestProductlView(Base):
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         wt = self.wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder1']['member1']
+        dummy = portal['memberfolder']['member1']
         self.wf.notifyCreated(dummy)
         chain = self.wf.getChainFor(dummy)
         self.failUnless(chain[0] == 'dexterity_membrane_workflow')
@@ -122,8 +122,8 @@ class TestProductlView(Base):
 
 # 启用监管账号
 
-        dummy = portal['memberfolder1']['sponsor1']
-        obj = portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        dummy = portal['memberfolder']['sponsor1']
+        obj = portal['organizations']['orgnization1']['orgnizationsurvey1']
         self.wf.notifyCreated(dummy)
         self.wf.notifyCreated(obj)
         chain = self.wf.getChainFor(dummy)
@@ -154,7 +154,7 @@ class TestProductlView(Base):
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         wt = self.wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder1']['member1']
+        dummy = portal['memberfolder']['member1']
         self.wf.notifyCreated(dummy)
         chain = self.wf.getChainFor(dummy)
         self.failUnless(chain[0] == 'dexterity_membrane_workflow')
@@ -163,8 +163,8 @@ class TestProductlView(Base):
         self.wf.doActionFor(dummy, 'approve', comment='foo')
         
 # 启用监管账号
-        dummy = portal['memberfolder1']['sponsor1']
-        obj = portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        dummy = portal['memberfolder']['sponsor1']
+        obj = portal['organizations']['orgnization1']['orgnizationsurvey1']
         self.wf.notifyCreated(dummy)
         self.wf.notifyCreated(obj)
         chain = self.wf.getChainFor(dummy)
@@ -198,7 +198,7 @@ class TestProductlView(Base):
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         wt = self.wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder1']['member1']
+        dummy = portal['memberfolder']['member1']
         self.wf.notifyCreated(dummy)
         chain = self.wf.getChainFor(dummy)
         self.failUnless(chain[0] == 'dexterity_membrane_workflow')
@@ -207,8 +207,8 @@ class TestProductlView(Base):
         self.wf.doActionFor(dummy, 'approve', comment='foo')
         
 # 启用监管账号
-        dummy = portal['memberfolder1']['sponsor1']
-        obj = portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        dummy = portal['memberfolder']['sponsor1']
+        obj = portal['organizations']['orgnization1']['orgnizationsurvey1']
         self.wf.notifyCreated(dummy)
         self.wf.notifyCreated(obj)
         chain = self.wf.getChainFor(dummy)

@@ -22,29 +22,29 @@ class Base(unittest.TestCase):
 
         setRoles(portal, TEST_USER_ID, ('Manager',))
 
-        portal.invokeFactory('qyxycjh.policy.orgnizationfolder', 'orgnizationfolder1')
-        portal['orgnizationfolder1'].invokeFactory('qyxycjh.policy.orgnization',
+#         portal.invokeFactory('qyxycjh.policy.orgnizationfolder', 'organizations')
+        portal['organizations'].invokeFactory('qyxycjh.policy.orgnization',
                                                     'orgnization1',
                                                    title="orgnization1",
                                                    legal_person=u"张三",
                                                    supervisor=u"企业信用促进会",
                                                    register_code="283832nb",
                                                    passDate=datetime.datetime.today())                                                     
-        portal['orgnizationfolder1'].invokeFactory('qyxycjh.policy.governmentorgnization',
+        portal['organizations'].invokeFactory('qyxycjh.policy.governmentorgnization',
                                                     'sponsororgnization1',
                                                    title="sponsororgnization1",
                                                    description=u"企业信用促进会",
                                                    operator="17@qq.com") 
         
-        portal['orgnizationfolder1']['orgnization1'].invokeFactory('qyxycjh.policy.orgnizationsurvey',
+        portal['organizations']['orgnization1'].invokeFactory('qyxycjh.policy.orgnizationsurvey',
                                                     'orgnizationsurvey1',
                                                    title="orgnizationsurvey1",
                                                    sponsor="sponsororgnization1")
-        portal['orgnizationfolder1']['orgnization1'].invokeFactory('qyxycjh.policy.orgnizationsurvey',
+        portal['organizations']['orgnization1'].invokeFactory('qyxycjh.policy.orgnizationsurvey',
                                                     'orgnizationsurvey2',
                                                    title="orgnizationsurvey2")              
-        portal.invokeFactory('qyxycjh.policy.memberfolder','memberfolder1')
-        portal['memberfolder1'].invokeFactory('qyxycjh.policy.organizationmember', 'member1',
+#         portal.invokeFactory('qyxycjh.policy.memberfolder','memberfolder')
+        portal['memberfolder'].invokeFactory('qyxycjh.policy.organizationmember', 'member1',
                                               email="12@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
@@ -54,7 +54,7 @@ class Base(unittest.TestCase):
                                               homepae='http://315ok.org/',
                                               orgname='orgnization1',
                                               description="I am member1")
-        portal['memberfolder1'].invokeFactory('qyxycjh.policy.organizationmember', 'member2',
+        portal['memberfolder'].invokeFactory('qyxycjh.policy.organizationmember', 'member2',
                                               email="13@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
@@ -65,7 +65,7 @@ class Base(unittest.TestCase):
                                               orgname='orgnization1',
                                               description="I am member1")
 
-        portal['memberfolder1'].invokeFactory('qyxycjh.policy.organizationmember', 'member3',
+        portal['memberfolder'].invokeFactory('qyxycjh.policy.organizationmember', 'member3',
                                               email="14@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
@@ -76,7 +76,7 @@ class Base(unittest.TestCase):
                                               orgname='orgnization1',
                                               description="I am member1")
 
-        portal['memberfolder1'].invokeFactory('qyxycjh.policy.organizationmember', 'member4',
+        portal['memberfolder'].invokeFactory('qyxycjh.policy.organizationmember', 'member4',
                                               email="15@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
@@ -87,7 +87,7 @@ class Base(unittest.TestCase):
                                               orgname='orgnization1',
                                               description="I am member1")
 
-        portal['memberfolder1'].invokeFactory('qyxycjh.policy.organizationmember', 'member5',
+        portal['memberfolder'].invokeFactory('qyxycjh.policy.organizationmember', 'member5',
                                               email="16@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
@@ -97,7 +97,7 @@ class Base(unittest.TestCase):
                                               homepae='http://315ok.org/',
                                               orgname='orgnization1',                                              
                                               description="I am member1")
-        portal['memberfolder1'].invokeFactory('qyxycjh.policy.sponsormember', 'sponsor1',
+        portal['memberfolder'].invokeFactory('qyxycjh.policy.sponsormember', 'sponsor1',
                                               email="100@qq.com",
                                               last_name=u"唐",
                                               first_name=u"岳军",
@@ -108,12 +108,12 @@ class Base(unittest.TestCase):
                                               orgname='sponsororgnization1',                                              
                                               description="I am sponsor1") 
         data = getFile('demo.txt').read()
-        item = portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1']
+        item = portal['organizations']['orgnization1']['orgnizationsurvey1']
         item.image = NamedImage(data, 'image/gif', u'image.gif')
         item.report = namedfile.NamedBlobFile(data, filename=u"demo.txt")       
         self.portal = portal
-        self.member1 = portal['memberfolder1']['member1']
-        self.sponsor1 = portal['memberfolder1']['sponsor1']
+        self.member1 = portal['memberfolder']['member1']
+        self.sponsor1 = portal['memberfolder']['sponsor1']
         self.wf = getToolByName(portal, 'portal_workflow')
                 
  

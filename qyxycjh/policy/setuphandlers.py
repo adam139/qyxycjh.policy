@@ -204,10 +204,23 @@ STRUCTURE = [
                      'sort_on':'created',
                      'sort_reversed':True,                     
                      'query':meitibaodao,
-                     }
-                                                                                                                               
+                     }                                                                                                                               
                      ]
-    },                           
+    },
+    {
+        'type': 'qyxycjh.policy.orgnizationfolder',
+        'title': u'企业库',
+        'id': 'organizations',
+        'description': u'企业数据库',
+        'layout': 'view',
+    },
+    {
+        'type': 'qyxycjh.policy.memberfolder',
+        'title': u'会员库',
+        'id': 'memberfolder',
+        'description': u'会员数据库',
+        'layout': 'adminb3_view',
+    },                                                     
     {
         'type': 'Folder',
         'title': u'帮助',
@@ -240,7 +253,7 @@ def post_install(context):
     if members is not None:
        members.exclude_from_nav = True
        members.reindexObject()
-
+       
     for item in STRUCTURE:
         _create_content(item, portal)
     
@@ -252,7 +265,15 @@ def post_install(context):
     members = portal.get('help', None)
     if members is not None:
        members.exclude_from_nav = True
-       members.reindexObject()       
+       members.reindexObject()
+    members = portal.get('organizations', None)
+    if members is not None:
+       members.exclude_from_nav = True
+       members.reindexObject()
+    members = portal.get('memberfolder', None)
+    if members is not None:
+       members.exclude_from_nav = True
+       members.reindexObject()              
 
 def uninstall(context):
     """Uninstall script"""

@@ -1,9 +1,11 @@
 #-*- coding: UTF-8 -*-
-import datetime
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import applyProfile
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting,FunctionalTesting
+
+from plone.testing import z2
+from zope.configuration import xmlconfig
 
 from plone.app.testing import (
 IntegrationTesting,
@@ -14,16 +16,6 @@ TEST_USER_NAME,
 SITE_OWNER_NAME,
 )
 
-from plone.testing import z2
-from plone.namedfile.file import NamedImage
-from plone import namedfile
-from zope.configuration import xmlconfig
-
-def getFile(filename):
-    """ return contents of the file with the given name """
-    import os
-    filename = os.path.join(os.path.dirname(__file__) + "/tests/", filename)
-    return open(filename, 'r')
 
 class SitePolicy(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
@@ -38,7 +30,7 @@ class SitePolicy(PloneSandboxLayer):
         import qyxycjh.theme
         import my315ok.products
         import plone.namedfile
-#         import my315ok.orgnization
+
         xmlconfig.file('configure.zcml', plone.app.contenttypes, context=configurationContext)
         xmlconfig.file('configure.zcml', Products.membrane, context=configurationContext)        
         xmlconfig.file('configure.zcml', dexterity.membrane, context=configurationContext)
@@ -50,34 +42,24 @@ class SitePolicy(PloneSandboxLayer):
     
     def tearDownZope(self, app):
 
-        # Uninstall products installed above
-#         z2.uninstallProduct(app, 'Products.PloneFormGen')
-#         z2.uninstallProduct(app, 'Products.TemplateFields')
-#         z2.uninstallProduct(app, 'Products.TALESField')
-#         z2.uninstallProduct(app, 'Products.PythonField')
         z2.uninstallProduct(app, 'Products.membrane')        
         
     def setUpPloneSite(self, portal):
 
         applyProfile(portal, 'plone.app.contenttypes:default')
-        applyProfile(portal, 'Products.membrane:default') 
+#         applyProfile(portal, 'Products.membrane:default') 
         applyProfile(portal, 'qyxycjh.policy:default')       
-        applyProfile(portal, 'dexterity.membrane:default')
+#         applyProfile(portal, 'dexterity.membrane:default')
 
 
 class IntegrationSitePolicy(SitePolicy):      
         
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'plone.app.contenttypes:default')        
-        applyProfile(portal, 'Products.membrane:default') 
+#         applyProfile(portal, 'Products.membrane:default') 
         applyProfile(portal, 'qyxycjh.policy:default')
-        applyProfile(portal, 'dexterity.membrane:default')
-
-#         applyProfile(portal, 'qyxycjh.policy:default')
 #         applyProfile(portal, 'dexterity.membrane:default')
-#        applyProfile(portal, 'dexterity.membrane.content:example')
 
-#         portal = self.layer['portal']
         #make global request work
         from zope.globalrequest import setRequest
         setRequest(portal.REQUEST)

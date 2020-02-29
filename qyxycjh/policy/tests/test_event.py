@@ -23,7 +23,7 @@ class TestView(Base):
     layer = FunctionalTesting
 
     def test_update_operator(self):
-        sorg = self.portal['orgnizationfolder1']['sponsororgnization1']
+        sorg = self.portal['organizations']['sponsororgnization1']
         self.assertEqual(sorg.operator, "100@qq.com")
 
 
@@ -31,8 +31,8 @@ class TestView(Base):
         from qyxycjh.policy.behaviors.org import IOrg
         app = self.layer['app']
         portal = self.layer['portal']
-        member = portal['memberfolder1']['member1']
-        org = portal['orgnizationfolder1']['orgnization1']
+        member = portal['memberfolder']['member1']
+        org = portal['organizations']['orgnization1']
         path = IOrg(member).getOrgPath()
         lp = IOrg(member).getOrgBn().orgnization_legalPerson
         sr = IOrg(member).getOrgBn().orgnization_supervisor

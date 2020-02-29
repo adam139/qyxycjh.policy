@@ -27,7 +27,7 @@ class TestView(Base):
         browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
         import transaction
         transaction.commit()
-        obj = portal['orgnizationfolder1'].absolute_url() + '/@@deparment_listing'
+        obj = portal['organizations'].absolute_url() + '/@@deparment_listing'
         logout()   
         browser.open(obj)
         outstr = '/++add++qyxycjh.policy.governmentorgnization'
@@ -42,7 +42,7 @@ class TestView(Base):
         browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
         import transaction
         transaction.commit()
-        obj = portal['orgnizationfolder1'].absolute_url() + '/@@view'
+        obj = portal['organizations'].absolute_url() + '/@@view'
         logout()   
         browser.open(obj)
         outstr = '/++add++qyxycjh.policy.orgnization'

@@ -16,16 +16,6 @@ from qyxycjh.policy.tests.base import Base
 class TestView(Base):
     
     layer = FunctionalTesting
-
-#     def test_view_registered(self):
-#         folder = self.portal['memberfolder1']
-#         try:
-#             getMultiAdapter(
-#             (folder, self.request),
-#             name="register"
-#             )
-#         except:
-#             self.fail("Register view is not registered properly.")
     
     def test_orgnization_output(self):
 
@@ -36,7 +26,7 @@ class TestView(Base):
         browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
         import transaction
         transaction.commit()
-        obj = portal['memberfolder1'].absolute_url() + '/@@register'
+        obj = portal['memberfolder'].absolute_url() + '/@@register'
         logout()   
         browser.open(obj)
         outstr = "E-mail Address"
@@ -51,7 +41,7 @@ class TestView(Base):
         browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
         import transaction
         transaction.commit()
-        obj = portal['memberfolder1'].absolute_url() + '/@@register_sponsor'
+        obj = portal['memberfolder'].absolute_url() + '/@@register_sponsor'
         logout()   
         browser.open(obj)
         outstr = "E-mail Address"

@@ -33,9 +33,9 @@ class CatalogSetupTest(Base):
                                    DelegatingIndexerFactory))
         self.assertTrue(isinstance(catalog.member_email,
                                    DelegatingIndexerFactory))
-        p0 = self.portal['memberfolder1']['member1']
-        p1 = self.portal['memberfolder1']['member2']
-        p2 = self.portal['memberfolder1']['sponsor1']
+        p0 = self.portal['memberfolder']['member1']
+        p1 = self.portal['memberfolder']['member2']
+        p2 = self.portal['memberfolder']['sponsor1']
         self.assertEqual(catalog.Title(p0)(), u"tangyuejun")
         self.assertEqual(catalog.Title(p1)(), u"tangyuejun")
         self.assertEqual(catalog.Title(p2)(), u"tangyuejun")

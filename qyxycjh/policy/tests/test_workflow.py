@@ -11,12 +11,7 @@ from plone.testing.z2 import Browser
 from Products.CMFCore.utils import getToolByName
 from qyxycjh.policy.tests.base import Base
 from qyxycjh.policy.testing import FunctionalTesting
-
-
-import os
 import unittest
-
-
 
 
 class TestView(Base):
@@ -28,7 +23,7 @@ class TestView(Base):
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         wt = wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder1']['member1']
+        dummy = portal['memberfolder']['member1']
         wf.notifyCreated(dummy)
         chain = wf.getChainFor(dummy)
         self.failUnless(chain[0] == 'dexterity_membrane_workflow')
@@ -47,7 +42,7 @@ class TestView(Base):
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
         wt = wf.credit_survey_workflow
-        org = portal['orgnizationfolder1']['orgnization1']
+        org = portal['organizations']['orgnization1']
         dummy = org['orgnizationsurvey1']
         wf.notifyCreated(dummy)
         chain = wf.getChainFor(dummy)
@@ -90,12 +85,12 @@ class TestView(Base):
         app = self.layer['app']
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
-        org = portal['orgnizationfolder1']['orgnization1']
+        org = portal['organizations']['orgnization1']
         wts = wf.credit_survey_workflow
         survey = org['orgnizationsurvey1']
         wts.notifyCreated(survey)
         wt = wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder1']['member1']
+        dummy = portal['memberfolder']['member1']
         wf.notifyCreated(dummy)
         dummy.email = 'JOE@example.org'
         dummy.password = 'secret'

@@ -11,14 +11,14 @@ class Allcontents(Base,NamedFileTestLayer):
 
                 
     def test_folder_types(self):
-        self.assertEqual(self.portal['orgnizationfolder1'].id,'orgnizationfolder1')        
-        self.assertEqual(self.portal['orgnizationfolder1']['sponsororgnization1'].id,'sponsororgnization1')
-        self.assertEqual(self.portal['orgnizationfolder1']['orgnization1'].id,'orgnization1')
-        self.assertEqual(self.portal['memberfolder1'].id,'memberfolder1') 
+        self.assertEqual(self.portal['organizations'].id,'organizations')        
+        self.assertEqual(self.portal['organizations']['sponsororgnization1'].id,'sponsororgnization1')
+        self.assertEqual(self.portal['organizations']['orgnization1'].id,'orgnization1')
+        self.assertEqual(self.portal['memberfolder'].id,'memberfolder') 
     
     def test_item_types(self):
-        self.assertEqual(self.portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey1'].id,'orgnizationsurvey1')
-        self.assertEqual(self.portal['orgnizationfolder1']['orgnization1']['orgnizationsurvey2'].id,'orgnizationsurvey2')
+        self.assertEqual(self.portal['organizations']['orgnization1']['orgnizationsurvey1'].id,'orgnizationsurvey1')
+        self.assertEqual(self.portal['organizations']['orgnization1']['orgnizationsurvey2'].id,'orgnizationsurvey2')
 
     def test_item_types(self):
         self.assertEqual(self.member1.email,'12@qq.com')

@@ -22,17 +22,9 @@ import os
 import unittest
 
 
-def getFile(filename):
-    """ return contents of the file with the given name """
-    filename = os.path.join(os.path.dirname(__file__), filename)
-    return open(filename, 'r')
-
-
 class TestView(Base):
 
     layer = FunctionalTesting
-
-
 
     def test_member_page(self):
 
@@ -42,7 +34,7 @@ class TestView(Base):
         setRoles(self.layer['portal'], TEST_USER_ID, ['Manager'])              
         wf = getToolByName(portal, 'portal_workflow')
         wt = wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder1']['member1']
+        dummy = portal['memberfolder']['member1']
         wf.notifyCreated(dummy)
         wf.doActionFor(dummy, 'approve', comment='foo')
         import transaction
@@ -67,7 +59,7 @@ class TestView(Base):
         request = self.layer['request']
         portal = self.portal
         wf = getToolByName(portal, 'portal_workflow')
-        dummy = portal['memberfolder1']['member2']
+        dummy = portal['memberfolder']['member2']
         review_state = wf.getInfoFor(dummy, 'review_state')
         keyManager = getUtility(IKeyManager)
         secret = keyManager.secret()
@@ -78,7 +70,7 @@ class TestView(Base):
             'id': 'member2',
         }
 
-        view = self.portal['memberfolder1'].restrictedTraverse(
+        view = self.portal['memberfolder'].restrictedTraverse(
             '@@ajaxmemberstate')
         result = view()
 
@@ -88,7 +80,7 @@ class TestView(Base):
         app = self.layer['app']
         wf = getToolByName(self.portal, 'portal_workflow')
         wt = wf.dexterity_membrane_workflow
-        dummy = self.portal['memberfolder1']['member1']
+        dummy = self.portal['memberfolder']['member1']
         wf.notifyCreated(dummy)
         chain = wf.getChainFor(dummy)
         self.failUnless(chain[0] == 'dexterity_membrane_workflow')

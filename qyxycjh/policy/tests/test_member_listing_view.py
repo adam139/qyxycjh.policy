@@ -14,12 +14,6 @@ import os
 import unittest
 
 
-def getFile(filename):
-    """ return contents of the file with the given name """
-    filename = os.path.join(os.path.dirname(__file__), filename)
-    return open(filename, 'r')
-
-
 class TestView(Base):
 
     layer = FunctionalTesting
@@ -37,7 +31,7 @@ class TestView(Base):
 
         import transaction
         transaction.commit()
-        obj = portal['memberfolder1'].absolute_url() + '/@@admin_view'
+        obj = portal['memberfolder'].absolute_url() + '/@@admin_view'
 
         browser.open(obj)
         outstr = "12@qq.com"
