@@ -10,8 +10,8 @@ class IOrganizationMember(IMember):
     """    
 
     orgname = schema.Choice(
-            title=_(u"organization name"),
-            vocabulary='qyxycjh.policy.vocabulary.orgnizationo',
+            title=_(u"company name"),
+            vocabulary='qyxycjh.policy.vocabulary.orgnizations',
             required=True
                         )
   
@@ -24,6 +24,6 @@ class ISponsorMember(IMember):
 
     orgname = schema.Choice(
             title=_(u"organization name"),
-            vocabulary='qyxycjh.policy.vocabulary.orgnizationo',
+            vocabulary='qyxycjh.policy.vocabulary.sponsors',
             required=True
                         )     

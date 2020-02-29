@@ -4,7 +4,7 @@ from Products.CMFCore.utils import getToolByName
 from five import grok
 from zope.schema.interfaces import IVocabularyFactory
 from qyxycjh.policy.content.orgnization import IOrgnization
-
+from qyxycjh.policy.content.governmentdepartment import IOrgnization as ISponsor
 from qyxycjh.policy import _
 
 class OrgnizationVocabulary(object):
@@ -21,9 +21,23 @@ class OrgnizationVocabulary(object):
 
 
 grok.global_utility(OrgnizationVocabulary, IVocabularyFactory,
-        name="qyxycjh.policy.vocabulary.orgnizationo")
+        name="qyxycjh.policy.vocabulary.orgnizations")
+
+class SponsorVocabulary(object):
+
+    def __call__(self, context):
+        catalog = getToolByName(context,"portal_catalog")
+        terms = []      
+        all = catalog.unrestrictedSearchResults({"object_provides":ISponsor.__identifier__})
+        for bs in all:
+            title = bs.Title
+            id = bs.id
+            terms.append(SimpleVocabulary.createTerm(id,id,title))
+        return SimpleVocabulary(terms)        
 
 
+grok.global_utility(SponsorVocabulary, IVocabularyFactory,
+        name="qyxycjh.policy.vocabulary.sponsors")
 
 annualsurvey_result=[    ('hege','hege',_(u'hege')),
                   ('jibenhege','jibenhege',_(u'jibenhege')),
