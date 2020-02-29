@@ -35,7 +35,7 @@
       for="*"
       name="footer"
       permission="zope.Public"
- 	    layer=".interfaces.IThemeSpecific"       
+ 	  layer=".interfaces.IThemeSpecific"       
       template="templates/footer.pt"
       />
             
@@ -81,12 +81,33 @@
         template="templates/batchnavigation_bootstrap.pt"
         />
 
+	<!-- data import/export-->
+    <include package="Products.CMFCore" file="permissions.zcml"/>
+
+
+   <browser:page
+        name="datainout-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".datainout.DataInOut"
+        layer=".interfaces.IThemeSpecific" 
+        template="templates/datainout.pt"
+        permission="cmf.ManagePortal"
+        />
+
+   <browser:page
+        name="datainout-getCSVTemplate"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".datainout.DataInOut"
+        attribute="getCSVTemplate"
+        layer=".interfaces.IThemeSpecific"        
+        permission="cmf.ManagePortal"
+        />
+
     <browser:page
 		name="qyxycjh-policy-macros"
 		for="*"
 		permission="zope2.View"
-		class=".macros.Macros"/>
- 		
+		class=".macros.Macros"/>		
 
  		 		
    <z3c:widgetTemplate

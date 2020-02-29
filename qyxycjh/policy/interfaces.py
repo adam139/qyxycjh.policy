@@ -7,9 +7,8 @@ from qyxycjh.policy import _
 class InputError(Exception):
     """Exception raised if there is an error making a data input
     """
-
-#文件夹mark interfaces,用于定义视图
-# todo :定义db_ajax_listing view
+class ICreateOrgEvent(Interface):
+    """新增一个organization object"""
 
 
 class IContainerTablelist (Interface):
