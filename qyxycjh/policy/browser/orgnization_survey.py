@@ -198,9 +198,7 @@ class SurveyView(grok.View):
         from qyxycjh.policy.content.governmentdepartment import IOrgnization
         # 获得该政府部门
         query = {"object_provides":IOrgnization.__identifier__,'id':"minzhengju"}
-        bs = self.catalog()(query)
-#        import pdb
-#        pdb.set_trace()        
+        bs = self.catalog()(query)        
         if bs: return bs[0].Title
         return None
     
@@ -310,9 +308,7 @@ class SurveyView(grok.View):
             log('plone.app.layout.viewlets.content: '
                 '%s has no associated workflow' % context.absolute_url(),
                 severity=logging.DEBUG)
-
-        return review_history
-    
+        return review_history    
     
     @memoize         
     def getOrgnizationFolder(self):
@@ -371,29 +367,19 @@ class SurveyPendingSponsorView(SurveyView):
     grok.template('survey_pending_sponsor_view')
     grok.name('sponsorview')
     grok.require('zope2.View')
-#    
-#    def render(self):
-#        pass     
-#    
+    
+       
 class SurveyPendingAgentView(SurveyView):
     """survey report view based workflow status: 'pendingagent'"""
     grok.template('survey_pending_agent_view')
     grok.name('agentview')
     grok.require('zope2.View')             
-#
-#    def render(self):
-#        pass
-#
+
+
+
 class SurveyPublishedView(SurveyView):
     """survey report view based workflow status: 'published'"""
     grok.template('survey_published_view')
     grok.name('publishedview')
     grok.require('zope2.View')
     
-
-        
-
-
-
-
-                 

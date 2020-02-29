@@ -1,6 +1,7 @@
 #-*- coding: UTF-8 -*-
 import unittest
 import os
+import datetime
 from qyxycjh.policy.testing import POLICY_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, setRoles
 from plone import namedfile
@@ -27,7 +28,8 @@ class Base(unittest.TestCase):
                                                    title="orgnization1",
                                                    legal_person=u"张三",
                                                    supervisor=u"企业信用促进会",
-                                                   register_code="283832nb")                                                     
+                                                   register_code="283832nb",
+                                                   passDate=datetime.datetime.today())                                                     
         portal['orgnizationfolder1'].invokeFactory('qyxycjh.policy.governmentorgnization',
                                                     'sponsororgnization1',
                                                    title="sponsororgnization1",

@@ -11,6 +11,9 @@ def indexer_orgnization_legalperson(obj, **kw):
 def indexer_orgnization_supervisor(obj, **kw):
     return obj.supervisor
 
+@indexer(IOrgnization)
+def indexer_orgnization_passdate(obj, **kw):
+    return obj.passDate
 
 @indexer(IOrgnization_annual_survey)
 def indexer_orgnization_annual_survey(obj, **kw):

@@ -10,7 +10,7 @@
   <object name="organization" meta_type="CMF Action" i18n:domain="xtshzz.policy">
    <property name="title" i18n:translate="">organization</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/socialorganizations</property>
+   <property name="url_expr">string:${portal_url}/organizations</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">python:member is not None</property>
@@ -34,7 +34,7 @@
   <object name="department" meta_type="CMF Action" i18n:domain="xtshzz.policy">
    <property name="title" i18n:translate="">government organization</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/socialorganizations/@@deparment_listing</property>
+   <property name="url_expr">string:${portal_url}/organizations/@@deparment_listing</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">python:member is not None</property>

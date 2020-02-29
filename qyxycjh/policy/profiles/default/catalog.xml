@@ -16,4 +16,18 @@
         <indexed_attr value="orgnization_supervisor"/>
     </index>
     <column value="orgnization_supervisor"/>
+
+    <index name="orgnization_passDate" meta_type="DateIndex">
+        <indexed_attr value="orgnization_passDate"/>
+    </index>
+    <column value="orgnization_passDate"/>
+    
+    <index name="orgnization_annual_survey" meta_type="FieldIndex">
+        <indexed_attr value="orgnization_annual_survey"/>
+    </index>
+    <column value="orgnization_annual_survey"/> 
+    <index name="orgnization_survey_year" meta_type="FieldIndex">
+        <indexed_attr value="orgnization_survey_year"/>
+    </index>
+    <column value="orgnization_survey_year"/>    
 </object>

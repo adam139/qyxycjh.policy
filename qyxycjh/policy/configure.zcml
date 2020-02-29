@@ -18,8 +18,11 @@
 
    <adapter name="orgnization_legalPerson" factory=".indexer.indexer_orgnization_legalperson"/>
    <adapter name="orgnization_supervisor" factory=".indexer.indexer_orgnization_supervisor"/>
-
-    <subscriber
+   <adapter name="orgnization_passDate" factory=".indexer.indexer_orgnization_passdate"/>   
+   <adapter name="orgnization_annual_survey" factory=".indexer.indexer_orgnization_annual_survey"/>
+   <adapter name="orgnization_survey_year" factory=".indexer.indexer_orgnization_survey_year"/>
+   
+   <subscriber
          for="qyxycjh.policy.content.member.ISponsorMember
          zope.lifecycleevent.IObjectAddedEvent"
          handler=".subscriber.updateSponsorOperator"
