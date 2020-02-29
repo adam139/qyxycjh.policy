@@ -16,6 +16,7 @@ from qyxycjh.policy.content.orgnization import IOrgnization
 from qyxycjh.policy.content.annualsurvey import IOrgnization_annual_survey
 from qyxycjh.policy.content.orgnizationfolder import IOrgnizationFolder
 from qyxycjh.policy.browser.orgnization_survey import SurveyView
+from qyxycjh.policy.browser.interfaces import IThemeSpecific
 
 grok.templatedir('templates') 
 
@@ -24,6 +25,7 @@ class Orgnizations_adminView(grok.View):
     grok.context(IOrgnizationFolder)
     grok.template('orgnization_listing_admin')
     grok.name('listview')
+    grok.layer(IThemeSpecific)
     grok.require('zope2.View')    
     
     def update(self):
@@ -268,6 +270,7 @@ class SurveyMore(grok.View):
     
     grok.context(IOrgnizationFolder)
     grok.name('surveymore')
+    grok.layer(IThemeSpecific)
     grok.require('zope2.View')            
     
     def render(self):
@@ -389,6 +392,7 @@ class ajaxsearch(grok.View):
     """    
     grok.context(ISiteRoot)
     grok.name('oajaxsearch')
+    grok.layer(IThemeSpecific)
     grok.require('zope2.View')
 
     def Datecondition(self,key):        
