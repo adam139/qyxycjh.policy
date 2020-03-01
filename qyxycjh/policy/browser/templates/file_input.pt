@@ -46,6 +46,8 @@
         </span>
     </span>
     <div tal:condition="allow_nochange" style="padding-top: 1em;">
+    	<label><a href="http://images.315ok.org/qyxycjh/qyxysbb.doc">"湘潭市守合同重信用企业申报表.doc"模板下载</a></label>
+
         <input
             type="radio"
             value="nochange"

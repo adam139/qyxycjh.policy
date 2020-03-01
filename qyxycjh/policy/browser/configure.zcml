@@ -7,8 +7,7 @@
 
     <include file="caching.zcml" />  
     <include package="z3c.form" file="meta.zcml" />
-    <include package="z3c.form" />
-      
+    <include package="z3c.form" />      
       
  	<browser:resourceDirectory
      name="qyxycjh.policy"
@@ -85,7 +84,7 @@
     <include package="Products.CMFCore" file="permissions.zcml"/>
 
 
-   <browser:page
+    <browser:page
         name="datainout-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".datainout.DataInOut"
@@ -94,7 +93,7 @@
         permission="cmf.ManagePortal"
         />
 
-   <browser:page
+    <browser:page
         name="datainout-getCSVTemplate"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".datainout.DataInOut"
@@ -109,8 +108,13 @@
 		permission="zope2.View"
 		class=".macros.Macros"/>		
 
+    <z3c:widgetTemplate
+        mode="input"
+ 		widget="plone.formwidget.namedfile.interfaces.INamedFileWidget"        
+ 		layer=".interfaces.IThemeSpecific"
+ 		template="templates/file_input.pt" />
  		 		
-   <z3c:widgetTemplate
+    <z3c:widgetTemplate
         mode="input"
  		widget="plone.formwidget.captcha.interfaces.ICaptchaWidget"        
  		layer=".interfaces.IThemeSpecific"

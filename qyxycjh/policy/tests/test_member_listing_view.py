@@ -10,8 +10,7 @@ from Products.CMFCore.utils import getToolByName
 from qyxycjh.policy.testing import FunctionalTesting
 from qyxycjh.policy.tests.base import Base
 from Products.Five.utilities.marker import mark
-import os
-import unittest
+
 
 
 class TestView(Base):
@@ -19,6 +18,7 @@ class TestView(Base):
     layer = FunctionalTesting
 
     def test_member_listing_view(self):
+        "adminb3_view"
 
         app = self.layer['app']
         portal = self.layer['portal']
@@ -36,3 +36,8 @@ class TestView(Base):
         browser.open(obj)
         outstr = "12@qq.com"
         self.assertTrue(outstr in browser.contents)
+        obj = portal['memberfolder'].absolute_url() + '/@@adminb3_view'
+
+        browser.open(obj)
+        outstr = u"企业"
+        self.assertTrue(outstr in browser.contents)        

@@ -117,7 +117,7 @@ class MemberFolderView(grok.View):
     def getOrgInfFromBrain(self, brain, orgid):
         "from brain portal_type fetch organization's or government department's interface"
 
-        if brain.portal_type == 'dexterity.membrane.organizationmember':
+        if brain.portal_type == 'qyxycjh.policy.organizationmember':
             exec(
                 "from qyxycjh.policy.content.orgnization import IOrgnization as Intf")
         else:

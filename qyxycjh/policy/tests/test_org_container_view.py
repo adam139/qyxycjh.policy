@@ -56,4 +56,28 @@ class TestView(Base):
         outstr = 'orgnizationsurvey1'
         self.assertTrue(outstr in browser.contents)        
         
+
+    def test_custom_widget(self):
+
+        portal = self.portal
+        wf = getToolByName(portal, 'portal_workflow')
+        wt = wf.credit_survey_workflow
+        org = portal['organizations']['orgnization1']
+        logout()
+
+        app = self.layer['app']
+        browser = Browser(app)
+        browser.handleErrors = False
+        browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
+        import transaction
+        transaction.commit()       
+
+        obj = org.absolute_url() + "/++add++qyxycjh.policy.orgnizationsurvey"
+        browser.open(obj)
+        import pdb
+        pdb.set_trace()
+        
+        outstr = '"http://images.315ok.org/qyxycjh/qyxysbb.doc"'
+        self.assertTrue(outstr in browser.contents)
+
  

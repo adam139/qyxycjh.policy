@@ -41,6 +41,10 @@ msgstr "缺省"
 msgid "Listen to audio for this captcha"
 msgstr "听声音"
 
+#: ./html_template.py:
+msgid "Organization"
+msgstr "企业"
+
 #: ./html_template.py:18
 msgid "draft"
 msgstr "草案"

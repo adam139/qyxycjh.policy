@@ -15,7 +15,7 @@ message = """<html>
 </html>
 """
 
-# dummy = _p("published")
+dummy = _p("Organization")
 # dummy = _p("draft")
 # dummy = _p("pendingsponsor")
 # dummy = _p("pendingagent")

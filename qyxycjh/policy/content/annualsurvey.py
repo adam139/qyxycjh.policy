@@ -17,7 +17,7 @@ class IOrgnization_annual_survey(form.Schema,IBasic):
 #所属社会组织
     title = schema.Choice(
             title=_(u"organization name"),
-            vocabulary='qyxycjh.policy.vocabulary.orgnizationo',
+            vocabulary='qyxycjh.policy.vocabulary.orgnizations',
             required=True
                         )
 
