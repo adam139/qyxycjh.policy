@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-02-26 13:06+0000\n"
+"POT-Creation-Date: 2020-03-01 01:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,62 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: qyxycjh.policy\n"
 
-#: ./profiles/default/types/qyxycjh.policy.annualsurveyfolder.xml
-msgid "Annual survey Folder"
+#: ./browser/templates/orgnization_view.pt:21
+msgid "Add annual survey"
 msgstr ""
 
-#: ./content/orgnization.py:50
+#: ./content/governmentdepartment.py:28
+#: ./content/orgnization.py:29
+msgid "Address"
+msgstr ""
+
+#: ./content/annualsurvey.py:43
 msgid "Attach your anual report (word, etc)."
 msgstr ""
 
-#: ./browser/orgnization_survey.py:278
+#: ./browser/member_view.py:417
+msgid "Base information"
+msgstr ""
+
+#: ./browser/orgnization_survey.py:288
 msgid "Create"
 msgstr ""
 
+#: ./browser/datainout.py:128
+msgid "Data successfully imported."
+msgstr ""
+
 #: ./browser/templates/orgnization_annual_survey.pt:26
-#: ./browser/templates/survey_draft_view.pt:31
+#: ./browser/templates/orgnization_view.pt:30
+#: ./browser/templates/survey_draft_view.pt:34
 msgid "Edit"
 msgstr ""
 
-#: ./configure.zcml:26
+#: ./browser/orgnization.py:25
+msgid "Edit Organization"
+msgstr ""
+
+#: ./browser/orgnization.py:13
+msgid "Edit Organization Survey"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.governmentorgnization.xml
+msgid "Government Orgnization"
+msgstr ""
+
+#: ./configure.zcml:42
 msgid "Installs the qyxycjh.policy package"
 msgstr ""
 
-#: ./browser/ajax_view.py:104
+#: ./profiles/default/types/qyxycjh.policy.organizationmember.xml
+msgid "Member"
+msgstr ""
+
+#: ./browser/member_view.py:448
+msgid "Network information"
+msgstr ""
+
+#: ./browser/ajax_view.py:109
 msgid "Not able to send notifications"
 msgstr ""
 
@@ -50,110 +84,220 @@ msgstr ""
 msgid "Organization annual credit survey reporter"
 msgstr ""
 
+#: ./profiles/default/types/qyxycjh.policy.orgnization.xml
+msgid "Orgnization"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.orgnizationfolder.xml
+msgid "Orgnization Folder"
+msgstr ""
+
+#: ./content/orgnization.py:54
+msgid "Pass Date"
+msgstr ""
+
+#: ./browser/register.py:124
+msgid "Please correct errors"
+msgstr ""
+
+#: ./browser/register.py:200
+msgid "Register a sponsor account"
+msgstr ""
+
+#: ./browser/datainout.py:125
+msgid "Some errors occured. Please check your CSV syntax and retry."
+msgstr ""
+
 #: ./browser/templates/orgnization_annual_survey.pt:36
-#: ./browser/templates/survey_draft_view.pt:41
+#: ./browser/templates/survey_draft_view.pt:44
 msgid "Submit"
 msgstr ""
 
-#: ./configure.zcml:34
+#: ./configure.zcml:50
 msgid "Uninstall: qyxycjh.policy"
 msgstr ""
 
-#: ./configure.zcml:34
+#: ./configure.zcml:50
 msgid "Uninstalls the qyxycjh.policy package"
 msgstr ""
 
-#: ./profiles/default/types/qyxycjh.policy.annualsurveyfolder.xml
-msgid "a folder contain some organizations's annual credit survey information"
+#: ./browser/member_view.py:432
+msgid "Update password"
 msgstr ""
 
-#: ./vocabulary.py:13
+#: ./browser/datainout.py:80
+msgid "Wrong specification of the CSV file. Please correct it and retry."
+msgstr ""
+
+#: ./utility.py:8
+msgid "Your image is too large"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.orgnizationfolder.xml
+msgid "a folder contain some orgnizations"
+msgstr ""
+
+#: ./content/governmentdepartment.py:38
+#: ./content/orgnization.py:45
+msgid "a image of the public sign"
+msgstr ""
+
+#: ./vocabulary.py:44
 msgid "buhege"
 msgstr ""
 
-#: ./content/orgnization.py:41
-msgid "civil agent audit date"
+#: ./browser/register.py:146
+msgid "cancel"
 msgstr ""
 
-#: ./content/orgnization.py:36
-msgid "civil agent comments"
+#: ./content/member.py:13
+msgid "company name"
 msgstr ""
 
-#: ./vocabulary.py:11
+#: ./browser/orgnization_listing.py:528
+msgid "edit annual survey comments and result"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.governmentorgnization.xml
+msgid "government orgnization content type"
+msgstr ""
+
+#: ./vocabulary.py:42
 msgid "hege"
 msgstr ""
 
 #. Default: "How many levels to list after the top level."
-#: ./browser/interfaces.py:21
+#: ./browser/interfaces.py:26
 msgid "help_dropdown_depth"
 msgstr ""
 
 #. Default: "WARNING! This is an experimental feature. This is using RAM to store cached template for dropdown menus. Technically every user and every visited section gets its own instance in the ram.cache. Don't enable this if you don't know what this is about. Disable this option if you get unexpected behavior of your global tabs."
-#: ./browser/interfaces.py:28
+#: ./browser/interfaces.py:33
 msgid "help_enable_caching"
 msgstr ""
 
 #. Default: "With this option enabled, every menu item is clickable. With this option disabled, an item is only clickable when it is not a parent so it has no children."
-#: ./browser/interfaces.py:43
+#: ./browser/interfaces.py:48
 msgid "help_enable_parent_clickable"
 msgstr ""
 
-#: ./vocabulary.py:12
+#. Default: "A code identifying this organization."
+#: ./content/orgnization.py:40
+msgid "help_register_code"
+msgstr ""
+
+#: ./vocabulary.py:43
 msgid "jibenhege"
 msgstr ""
 
 #. Default: "Anonymous User"
-#: ./browser/orgnization_survey.py:273
+#: ./browser/orgnization_survey.py:284
 msgid "label_anonymous_user"
 msgstr ""
 
 #. Default: "Depth of dropdown menus"
-#: ./browser/interfaces.py:20
+#: ./browser/interfaces.py:25
 msgid "label_dropdown_depth"
 msgstr ""
 
 #. Default: "Enable caching"
-#: ./browser/interfaces.py:27
+#: ./browser/interfaces.py:32
 msgid "label_enable_caching"
 msgstr ""
 
 #. Default: "Enable clicking menu items that have children"
-#: ./browser/interfaces.py:41
+#: ./browser/interfaces.py:46
 msgid "label_enable_parent_clickable"
 msgstr ""
 
-#: ./content/orgnization.py:54
+#. Default: "register code"
+#: ./content/orgnization.py:38
+msgid "label_register_code"
+msgstr ""
+
+#: ./content/annualsurvey.py:48
 msgid "last status of the annual survey"
 msgstr ""
 
-#: ./content/orgnization.py:28
+#: ./content/orgnization.py:33
+msgid "legal person"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.memberfolder.xml
+msgid "memberfolder"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.memberfolder.xml
+msgid "memberfolder for site member"
+msgstr ""
+
+#: ./content/governmentdepartment.py:32
+msgid "operator"
+msgstr ""
+
+#: ./content/annualsurvey.py:19
+#: ./content/member.py:26
 msgid "organization name"
 msgstr ""
 
-#: ./configure.zcml:26
+#: ./content/governmentdepartment.py:24
+msgid "organization summary"
+msgstr ""
+
+#: ./profiles/default/types/qyxycjh.policy.orgnization.xml
+msgid "orgnization content type"
+msgstr ""
+
+#: ./content/governmentdepartment.py:20
+#: ./content/orgnization.py:21
+msgid "orgnization name"
+msgstr ""
+
+#: ./content/governmentdepartment.py:37
+#: ./content/orgnization.py:44
+msgid "public sign"
+msgstr ""
+
+#: ./configure.zcml:42
 msgid "qyxycjh.policy"
 msgstr ""
 
-#: ./content/orgnization.py:49
+#: ./content/annualsurvey.py:42
 msgid "report"
 msgstr ""
 
-#: ./content/orgnization.py:32
+#: ./content/orgnization.py:25
+msgid "sector"
+msgstr ""
+
+#: ./content/annualsurvey.py:25
 msgid "sponsor"
 msgstr ""
 
-#: ./content/orgnization.py:39
+#: ./content/annualsurvey.py:32
 msgid "sponsor audit date"
 msgstr ""
 
-#: ./content/orgnization.py:34
+#: ./content/annualsurvey.py:27
 msgid "sponsor comments"
 msgstr ""
 
-#: ./content/orgnization.py:59
+#: ./profiles/default/types/qyxycjh.policy.sponsormember.xml
+msgid "sponsor member"
+msgstr ""
+
+#: ./browser/register.py:119
+msgid "submit"
+msgstr ""
+
+#: ./content/orgnization.py:49
+msgid "supervisor organization"
+msgstr ""
+
+#: ./content/annualsurvey.py:53
 msgid "the result of annual survey"
 msgstr ""
 
-#: ./content/orgnization.py:44
+#: ./content/annualsurvey.py:37
 msgid "the year for survey"
 msgstr ""

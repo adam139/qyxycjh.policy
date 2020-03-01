@@ -14,12 +14,14 @@
        <div class="row">
        	<div class="col-xs-12">
        		<p class="noindent">湘潭市企业信用促进会：</p>
-       		<p>本社会团体根据《社会团体登记管理条例》、《民间非营利组织会计制度》等有关规定编制
+       		<p>本企业根据《湘潭市守合同重信用企业申报规定》等编制
        			<span class="focuse" tal:content="python:context.year">2011</span>
-       		年度工作报告书，并保证本报告书内容真实、准确、完整。</p>
+       		年度企业信用报告书，并保证本报告书内容真实、准确、完整。</p>
        		<p>请予审查。</p>
-       		<p class="text-right">法定代表人签字：<strong tal:content="python:view.getLegalPerson()">张三</strong></p>
-       		<p class="text-right">（社团印章）</p>       		
+       		<div style="text-align:right;margin-top:25px;margin-right:2em;line-height:1.9">
+       		<p>法定代表人签字：<strong tal:content="python:view.getLegalPerson()">张三</strong></p>
+       		<p>（社团印章）</p>
+       		</div>       		
        	</div>
        </div>
 
@@ -37,7 +39,7 @@
        </div>
        <div class="row report">
        	<div class="col-md-6 col-sd-12">
-       		<span class="label"><strong>年检报告书：</strong></span>
+       		<span class="label"><strong>信用报告书：</strong></span>
        		<span>
        			<a tal:attributes="href string:${context/absolute_url}/@@download/report/${context/report/filename}">
        				点击查看</a>

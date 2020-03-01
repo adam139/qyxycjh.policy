@@ -15,10 +15,10 @@ message = """<html>
 </html>
 """
 
-dummy = _p("published")
-dummy = _p("draft")
-dummy = _p("pendingsponsor")
-dummy = _p("pendingagent")
-dummy = _p("Agree")
-dummy = _p("Veto")
-dummy = _p("Pending sponsor review")
+# dummy = _p("published")
+# dummy = _p("draft")
+# dummy = _p("pendingsponsor")
+# dummy = _p("pendingagent")
+# dummy = _p("Agree")
+# dummy = _p("Veto")
+# dummy = _p("Pending sponsor review")
