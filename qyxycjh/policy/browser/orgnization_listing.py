@@ -467,7 +467,7 @@ class ajaxsearch(grok.View):
         "根据参数total,braindata,返回jason 输出"
         outhtml = ""      
         k = 0
-        for i in braindata:           
+        for i in braindata:          
             out = """<tr class="text-left">
                                 <td class="col-md-1">%(num)s</td>
                                 <td class="col-md-2 text-left"><a href="%(objurl)s">%(title)s</a></td>

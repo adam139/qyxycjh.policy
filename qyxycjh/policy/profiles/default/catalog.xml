@@ -7,6 +7,14 @@
     </index>   
     <column value="email"/>
     
+    <index name="orgnization_address" meta_type="FieldIndex">
+        <indexed_attr value="orgnization_address"/>
+    </index>
+    <column value="orgnization_address"/>    
+    <index name="orgnization_registerCode" meta_type="FieldIndex">
+        <indexed_attr value="orgnization_registerCode"/>
+    </index>
+    <column value="orgnization_registerCode"/>    
     <index name="orgnization_legalPerson" meta_type="FieldIndex">
         <indexed_attr value="orgnization_legalPerson"/>
     </index>

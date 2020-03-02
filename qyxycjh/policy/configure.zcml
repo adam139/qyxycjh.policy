@@ -15,13 +15,18 @@
     <include package=".portlet" />
     <grok:grok package="." /> 
     <!-- -*- cusomize indexer -*- -->
-
+   <adapter name="orgnization_address" factory=".indexer.indexer_orgnization_address"/>
    <adapter name="orgnization_legalPerson" factory=".indexer.indexer_orgnization_legalperson"/>
    <adapter name="orgnization_supervisor" factory=".indexer.indexer_orgnization_supervisor"/>
+   <adapter name="orgnization_registerCode" factory=".indexer.indexer_orgnization_registercode"/>
    <adapter name="orgnization_passDate" factory=".indexer.indexer_orgnization_passdate"/>   
    <adapter name="orgnization_annual_survey" factory=".indexer.indexer_orgnization_annual_survey"/>
    <adapter name="orgnization_survey_year" factory=".indexer.indexer_orgnization_survey_year"/>
-   
+
+   <subscriber
+         for="qyxycjh.policy.interfaces.ICreateOrgEvent"
+         handler=".subscriber.CreateOrgEvent"
+    />   
    <subscriber
          for="qyxycjh.policy.content.member.ISponsorMember
          zope.lifecycleevent.IObjectAddedEvent"

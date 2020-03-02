@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-03-01 01:28+0000\n"
+"POT-Creation-Date: 2020-03-02 05:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Government Orgnization"
 msgstr ""
 
-#: ./configure.zcml:42
+#: ./configure.zcml:47
 msgid "Installs the qyxycjh.policy package"
 msgstr ""
 
@@ -113,11 +113,11 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: ./configure.zcml:50
+#: ./configure.zcml:55
 msgid "Uninstall: qyxycjh.policy"
 msgstr ""
 
-#: ./configure.zcml:50
+#: ./configure.zcml:55
 msgid "Uninstalls the qyxycjh.policy package"
 msgstr ""
 
@@ -235,6 +235,10 @@ msgstr ""
 msgid "operator"
 msgstr ""
 
+#: ./profiles/default/actions.xml
+msgid "organization"
+msgstr ""
+
 #: ./content/annualsurvey.py:19
 #: ./content/member.py:26
 msgid "organization name"
@@ -258,7 +262,7 @@ msgstr ""
 msgid "public sign"
 msgstr ""
 
-#: ./configure.zcml:42
+#: ./configure.zcml:47
 msgid "qyxycjh.policy"
 msgstr ""
 

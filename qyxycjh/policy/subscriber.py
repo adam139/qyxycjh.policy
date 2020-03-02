@@ -1,11 +1,49 @@
 # -*- coding: UTF-8 -*-
 from dexterity.membrane.content.member import IMember
 from qyxycjh.policy.content.governmentdepartment import IOrgnization
+from qyxycjh.policy.content.orgnizationfolder import IOrgnizationFolder
+from qyxycjh.policy.interfaces import ICreateOrgEvent
 from Products.CMFCore.utils import getToolByName
 from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
 from zope.component import getMultiAdapter
 from zope.site.hooks import getSite
+from plone.dexterity.utils import createContentInContainer
 
+def CreateOrgEvent(event):
+    """this event be fired by member join event, username,address password parameters to create a membrane object"""
+    site = getSite()
+     
+    catalog = getToolByName(site,'portal_catalog')
+    try:
+        newest = catalog.unrestrictedSearchResults(
+                {'object_provides': IOrgnizationFolder.__identifier__})
+    except:
+        return      
+
+    memberfolder = newest[0].getObject()       
+    try:
+        item =createContentInContainer(memberfolder,
+                                       "qyxycjh.policy.orgnization",
+                                       checkConstraints=False,
+                                       id=event.id)
+#        setattr(memberfolder,'registrant_increment',memberid)
+        item.title = event.title
+        item.description = event.description
+        item.address = event.address
+        item.legal_person = event.legal_person 
+        item.supervisor = event.supervisor
+        item.register_code = event.register_code
+        
+        import datetime
+        datearray = event.passDate.split('-')
+        if len(datearray) >= 3:
+            val = map(int,datearray)               
+            item.passDate = datetime.date(*val)  
+        else:
+            item.passDate = datetime.date.today()
+        item.reindexObject()                     
+    except:
+        return
 
 def getMember(context, email):
     "get member object from email"

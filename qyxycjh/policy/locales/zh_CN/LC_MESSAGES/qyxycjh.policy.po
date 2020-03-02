@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qyxycjh.policy\n"
-"POT-Creation-Date: 2020-03-01 01:28+0000\n"
-"PO-Revision-Date: 2020-03-01 09:42+0800\n"
+"POT-Creation-Date: 2020-03-02 05:03+0000\n"
+"PO-Revision-Date: 2020-03-02 13:29+0800\n"
 "Last-Translator: Adam <yuejun.tang@gmail.com>\n"
 "Language-Team: 315ok.org <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "编辑信用报告"
 msgid "Government Orgnization"
 msgstr "主管组织"
 
-#: configure.zcml:42
+#: configure.zcml:47
 msgid "Installs the qyxycjh.policy package"
 msgstr ""
 
@@ -111,11 +111,11 @@ msgstr "出错！请检查你的CSV文件格式。"
 msgid "Submit"
 msgstr "提交"
 
-#: configure.zcml:50
+#: configure.zcml:55
 msgid "Uninstall: qyxycjh.policy"
 msgstr ""
 
-#: configure.zcml:50
+#: configure.zcml:55
 msgid "Uninstalls the qyxycjh.policy package"
 msgstr ""
 
@@ -232,6 +232,10 @@ msgstr "成员文件夹"
 msgid "operator"
 msgstr "经办人"
 
+#: profiles/default/actions.xml
+msgid "organization"
+msgstr "申报企业"
+
 #: content/annualsurvey.py:19 content/member.py:26
 msgid "organization name"
 msgstr "企业名称"
@@ -252,7 +256,7 @@ msgstr "企业名称"
 msgid "public sign"
 msgstr "公章"
 
-#: configure.zcml:42
+#: configure.zcml:47
 msgid "qyxycjh.policy"
 msgstr ""
 

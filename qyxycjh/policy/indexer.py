@@ -4,12 +4,20 @@ from qyxycjh.policy.content.orgnization import IOrgnization
 from qyxycjh.policy.content.annualsurvey import IOrgnization_annual_survey
 
 @indexer(IOrgnization)
+def indexer_orgnization_address(obj, **kw):
+    return obj.address
+
+@indexer(IOrgnization)
 def indexer_orgnization_legalperson(obj, **kw):
     return obj.legal_person
 
 @indexer(IOrgnization)
 def indexer_orgnization_supervisor(obj, **kw):
     return obj.supervisor
+
+@indexer(IOrgnization)
+def indexer_orgnization_registercode(obj, **kw):
+    return obj.register_code
 
 @indexer(IOrgnization)
 def indexer_orgnization_passdate(obj, **kw):

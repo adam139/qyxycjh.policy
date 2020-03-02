@@ -7,7 +7,7 @@
  
   <object name="user" meta_type="CMF Action Category">
   <property name="title"></property>
-  <object name="organization" meta_type="CMF Action" i18n:domain="xtshzz.policy">
+  <object name="organization" meta_type="CMF Action" i18n:domain="qyxycjh.policy">
    <property name="title" i18n:translate="">organization</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/organizations</property>
