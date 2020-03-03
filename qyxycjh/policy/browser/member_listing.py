@@ -138,7 +138,7 @@ class MemberFolderView(grok.View):
             row['name'] = brain.Title
             id = brain.getObject().orgname
 
-            if brain.portal_type == 'dexterity.membrane.organizationmember':
+            if brain.portal_type == 'qyxycjh.policy.organizationmember':
                 exec(
                     "from qyxycjh.policy.content.orgnization import IOrgnization as Intf")
 
@@ -256,7 +256,8 @@ class MemberAjaxSearch(grok.View):
     grok.name('member_ajax')
     grok.context(IMemberfolder)
     grok.layer(IThemeSpecific)
-    grok.require('cmf.ManagePortal')
+    grok.require('zope2.View')
+#     grok.require('cmf.ManagePortal')
 
     def render(self):
         searchview = getMultiAdapter(
@@ -321,7 +322,9 @@ class MemberFolderB3View(MemberFolderView):
     grok.template('member_ajax_listings_b3')
     grok.name('adminb3_view')
     grok.layer(IThemeSpecific)
-    grok.require('cmf.ManagePortal')
+    grok.require('qyxycjh.policy.review.anualreport')
+#     grok.require('cmf.ManagePortal')
+
 
 
 class memberstate(grok.View):

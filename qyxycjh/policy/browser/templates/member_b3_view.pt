@@ -54,27 +54,23 @@
           	</div>       
       </div>
       <div class="row" tal:condition="python:view.isSponsor()">
-       	<div class="col-md-offset-6 col-md-3">
-      		<div tal:define="curl python:context.absolute_url() + '/@@managed_orgs_b3_view'">
-      		<a tal:condition="curl" class="btn btn-primary" title="查看申报统计" tal:attributes="href python:curl">
+      		<div class="col-md-offset-6 col-md-3"
+      			tal:define="curl python:context.absolute_url() + '/@@managed_orgs_b3_view'">
+      		<a class="btn btn-primary" title="查看申报统计" tal:attributes="href python:curl">
       			查看申报统计
       		</a>
       		</div>     	
       </div>
-      <div class="row">
-      	<div class="col-md-offset-6 col-md-3">
-      		<div tal:define="curl python:view.createSurveyUrl()">
+      <div class="row" tal:condition="python:view.isOrgAccount()">
+      	<div class="col-md-offset-6 col-md-3" tal:define="curl python:view.createSurveyUrl()">
       		<a tal:condition="curl" class="btn btn-primary" title="创建年度报告" tal:attributes="href python:curl">
       			创建年度报告
       		</a>
-      		</div>
       	</div>
-      	<div class="col-md-3">
-      		<div tal:define="curl python:view.SurveyUrl()">
+      	<div class="col-md-3" tal:define="curl python:view.SurveyUrl()">
       		<a tal:condition="curl" class="btn btn-primary" title="查看年度报告" tal:attributes="href python:curl">
       			查看年度报告
       		</a>
-      		</div>
       	</div>      	
       </div>
       </section>     

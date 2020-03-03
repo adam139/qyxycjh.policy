@@ -93,12 +93,13 @@ class MembraneMemberView(grok.View):
         "see current user if is a organization account"
         id = self.currentUserEmail()
         if id == "":
-            return False
+            return 0
         query = {
             "object_provides": IOrganizationMember.__identifier__,
             'email': id}
         bns = self.catalog()(query)
         return len(bns)
+
 
     @memoize
     def getSponsorOrgName(self):
@@ -106,7 +107,7 @@ class MembraneMemberView(grok.View):
         from qyxycjh.policy.behaviors.org import ISponsor
         id = self.currentUserEmail()
         if id == "":
-            return False
+            return ""
         query = {"object_provides": ISponsorMember.__identifier__, 'email': id}
         bns = self.catalog()(query)
         try:
@@ -124,14 +125,10 @@ class MembraneMemberView(grok.View):
         "see current user if is a sponsor account"
         id = self.currentUserEmail()
         if id == "":
-            return False
+            return 0
         query = {"object_provides": ISponsorMember.__identifier__, 'email': id}
         bns = self.catalog()(query)
-        try:
-            bn = bns[0]
-            return True
-        except BaseException:
-            return False
+        return len(bns)
 
     def isAgentOperator(self):
         "see current user if is a civil agent operator account"

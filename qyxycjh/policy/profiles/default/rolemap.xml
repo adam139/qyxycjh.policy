@@ -14,7 +14,13 @@
     	<role name="Sponsor"/>
 		<role name="Site Administrator"/>
 		<role name="Manager"/>
-	</permission>	
+	</permission>
+	<permission name="Modify portal content" acquire="False">
+		<role name="Sponsor"/>
+		<role name="Site Administrator"/>
+	    <role name="Owner"/>
+		<role name="Manager"/>
+	</permission>		
 	<permission name="Add portal content" acquire="False">
 		<role name="Member"/>
 		<role name="Site Administrator"/>
