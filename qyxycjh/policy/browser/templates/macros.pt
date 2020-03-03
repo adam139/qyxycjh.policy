@@ -17,10 +17,10 @@
        		<p>本企业根据《湘潭市守合同重信用企业申报规定》等编制
        			<span class="focuse" tal:content="python:context.year">2011</span>
        		年度企业信用报告书，并保证本报告书内容真实、准确、完整。</p>
-       		<p>请予审查。</p>
+       		<p style="margin-top:15px">请予审查。</p>
        		<div style="text-align:right;margin-top:25px;margin-right:2em;line-height:1.9">
        		<p>法定代表人签字：<strong tal:content="python:view.getLegalPerson()">张三</strong></p>
-       		<p>（社团印章）</p>
+       		<p style="margin-top:15px">（社团印章）</p>
        		</div>       		
        	</div>
        </div>
@@ -49,13 +49,15 @@
        <div class="row">
 			<div class="col-xs-12 border">
              <div class="row">
-                <div class="col-xs-12 col-sm-6 right-bottom" >
+             	<div class="col-xs-12 col-sm-6 left-bottom" >
                 	<div class="row comments">
-                		<div class="col-xs-12">
-                			<div tal:content="python:context.sponsor_comments"></div>
+                		<div class="col-xs-12" style="line-height:70px;height:70px">
+                			<div class="text-center" tal:content="python:context.sponsor_comments"></div>
                 		</div>
-                	</div>
-                	<div class="row comments">
+                	</div>             		
+             	</div>
+                <div class="col-xs-12 col-sm-6 right-bottom" style="border-left:1px solid #dedede;">
+                	<div class="row comments" style="line-height:35px">
                 		<div class="col-xs-6">
                 				<span class="label">经办人：</span>
                 				<span tal:content="python:view.getSponsorOperator()"></span>
