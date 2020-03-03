@@ -179,7 +179,7 @@ class MembraneMemberView(grok.View):
         else:
             query = {
                 "object_provides": IOrgnization_annual_survey.__identifier__,
-                'review_state': "pendingsponsor"}
+                'review_state': "pending"}
             bns = self.catalog()(query)
             email = self.currentUserEmail()
             pending = []
@@ -199,13 +199,12 @@ class MembraneMemberView(grok.View):
     def SurveyUrl(self):
         "return current annual survey url"
         from qyxycjh.policy.behaviors.org import IOrg
-
         member_data = self.pm().getAuthenticatedMember()
         try:
             id = member_data.getUserName()
         except BaseException:
             return ""
-        query = {"object_provides": IMember.__identifier__, 'email': id}
+        query = {"object_provides": IOrganizationMember.__identifier__, 'email': id}
         bns = self.catalog()(query)
         try:
             bn = bns[0]
@@ -241,7 +240,7 @@ class MembraneMemberView(grok.View):
             id = member_data.getUserName()
         except BaseException:
             return ""
-        query = {"object_provides": IMember.__identifier__, 'email': id}
+        query = {"object_provides": IOrganizationMember.__identifier__, 'email': id}
         bns = self.catalog()(query)
         try:
             bn = bns[0]
@@ -320,15 +319,13 @@ class ManagedOrgsView(MembraneMemberView):
     @memoize
     def getManaged_orgs_list(self, start=0, size=0):
         "return I managed all organizations"
-#        sponsor = self.getSponsorOrgName()
-#        query = {"object_provides":IOrgnization.__identifier__,'orgnization_supervisor':sponsor}
-#        bns = self.catalog()(query)
-#        return bns
+#         sponsor = self.getSponsorOrgName()
+#         query = {"object_provides":IOrgnization.__identifier__,'orgnization_supervisor':sponsor}
+#         bns = self.catalog()(query)
+#         return bns
 
         if size == 0:
             braindata = self.allitems()
-#            return self.outputList(braindata)
-
         else:
             sponsor = self.getSponsorOrgName()
             braindata = self.catalog()({"object_provides": IOrgnization.__identifier__,
@@ -349,15 +346,15 @@ class ManagedOrgsView(MembraneMemberView):
         try:
             survey = getattr(org, id, None)
             if survey == None:
-                return u"未提交年检报告"
+                return u"未提交年度报告"
             else:
-                return u"已提交年检报告"
+                return u"已提交年度报告"
         except BaseException:
             return u"未指定"
 
     def outputList(self, braindata):
         outhtml = ""
-        brainnum = len(braindata)
+#         brainnum = len(braindata)
         for i in braindata:
             objurl = i.getURL()
             objtitle = i.Title
@@ -446,6 +443,7 @@ class EditProfileNetworking(dexterity.EditForm):
     grok.context(IMember)
     grok.layer(IThemeSpecific)
     label = _(u'Network information')
+    
 # avoid autoform functionality
 
     def updateFields(self):
@@ -460,7 +458,7 @@ class EditProfileOrgName(dexterity.EditForm):
     grok.name('edit-orgname')
     grok.context(IOrganizationMember)
     grok.layer(IThemeSpecific)
-    label = u'更新所属社会组织'
+    label = u'更新所属社企业'
 # avoid autoform functionality
 
     def updateFields(self):

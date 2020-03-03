@@ -13,13 +13,11 @@
 <body>
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main" 
-    	tal:define="text_to_html nocall:context/@@qyxycjh-policy-macros/text_to_html;canread python:view.canRead()">
-
+    	tal:define="canread python:view.canRead()">
       <div class="page-header">
-           <h3><span class="text-info" tal:content="python:view.getSponsorOrgName()"></span>直辖社会组织年检简表</h3>           
+           <h3><span class="text-info" tal:content="python:view.getSponsorOrgName()"></span>直辖企业年度申报表</h3>           
       </div>
       <div tal:condition= "python:not(canread)" class="text-warning">对不起，你没有权限查看此页面！</div>
-
       <div tal:condition="canread" tal:omit-tag="">
       <section class="orglistes">
 			<div class="row">
@@ -30,10 +28,10 @@
             <th class="col-md-9">社会组织</th>
             <th class="col-md-3">年检状态</th>                  
           	</tr>
-        		</thead>
+        	</thead>
        		<div tal:omit-tag="" tal:define="itemlist python:view.getManaged_orgs_list(0,10);">
        		<tbody id="tablecontent" tal:condition="itemlist" tal:content="structure python:itemlist">
-       	  </tbody>
+       	    </tbody>
            </div>
       </table>      
       </div>   	
@@ -56,7 +54,7 @@
     </tal:main-macro>
 </metal:main>
   <metal:js fill-slot="javascript_bottom_slot">
-	<script src="http://images.315ok.org/qyxycjh/js/ajaxload_more.min.js">	  	
+	<script src="http://images.315ok.org/xtshzz/js/ajaxload_more.min.js">	  	
 	</script>	
 	</metal:js>
 </body>

@@ -64,20 +64,16 @@
 
              </tr>
              <tr>
-                <td class="col-md-6 title" >
+                <td class="col-md-12 title" colspan="3" >
                 	<span class="label">业务范围：</span>
                 	<span class="content" tal:content="python:context.description">零售业</span>
-                </td>                
-                <td class="col-md-6 title" >
-                	<span class="label">批准时间：</span>
-                	<span class="content" tal:content="python:context.passDate.strftime('%Y-%m-%d')">2012-07-22</span>
-                </td>
+                </td>               
              </tr>
              <tr>
                 <td class="col-md-12" colspan="3" 
                 	tal:define="datalist python:view.getAnnualSurveyList();num python:len(datalist)">
                 	<div>
-                		<h2>年检情况</h2>
+                		<h2>申报情况</h2>
                 	</div>
                 	<div tal:condition="num">
                 		<table class="listing" width="100%" cellspacing="1" cellpadding="0" border="0" bgcolor="#cfcfcf" align="center">

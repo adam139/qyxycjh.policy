@@ -75,18 +75,21 @@ def userLoginedIn(event):
 
     portal = getSite()
     user = event.object
-    if "@" not in user.getUserName():
+    email = user.getUserName()
+    if "@" not in email:
         return
+    # check if is sponsor
     # check if we have an access to request object
     request = getattr(portal, 'REQUEST', None)
     if not request:
         return
     # now complile and render our expression to url
+    catalog = getToolByName(portal, 'portal_catalog')
 
     try:
-        member_url_view = getMultiAdapter(
-            (portal, request), name=u"member_url")
-        url = member_url_view()
+        bn = catalog({'object_provides': IMember.__identifier__, "email": email})[0]
+        url = bn.getURL()
+#         url = member_url_view()
     except Exception, e:
         logException(u'Error during user login in redirect')
         return

@@ -98,12 +98,12 @@ class SurveyWorkflow(grok.View):
                                                              ", ".join(send_to_bcc) or 'no-one')                    
             else:
                 try:
-                    mail_host.secureSend(msg, mto=send_to, mfrom=send_from,
-                                     subject=subject, charset=notify_encode, mbcc=send_to_bcc)
+                    mail_host.send(msg, mto=send_to, mfrom=send_from,
+                                     subject=subject, charset=notify_encode)
                 except TypeError:
                     # BBB: Plone 2.5 has problem sending MIMEMultipart... fallback to normal plain text email
-                    mail_host.secureSend(plain_text, mto=send_to, mfrom=send_from,
-                                     subject=subject, charset=notify_encode, mbcc=send_to_bcc)                
+                    mail_host.send(plain_text, mto=send_to, mfrom=send_from,
+                                     subject=subject, charset=notify_encode)                
         except Exception, inst:
             putils = getToolByName(object,'plone_utils')
             putils.addPortalMessage(_(u'Not able to send notifications'))
@@ -185,8 +185,6 @@ class SurveySubmitAgent(SurveyWorkflow):
 #        self.portal_state = getMultiAdapter((context, self.request), name=u"plone_portal_state")
         # call organization survey draft view
         dview = getMultiAdapter((context, self.request),name=u"sponsorview")
-#        import pdb
-#        pdb.set_trace()
         sponsor = dview.getAgentOrg()
         if sponsor:
             # 提交民政局审核

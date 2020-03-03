@@ -28,6 +28,8 @@
                 doc_type view/file_content_type;
                 icon view/file_icon;
                 filename view/filename;">
+    <label><a href="http://images.315ok.org/qyxycjh/qyxysbb.doc" target="_blank">"湘潭市守合同重信用企业申报表.doc"模板下载</a></label>
+    <br/>
     <span tal:condition="python: exists and download_url and action=='nochange'">
         <img tal:condition="icon" src="" alt=""
              tal:attributes="src icon;
@@ -45,9 +47,7 @@
                   i18n:translate="">100</span>
         </span>
     </span>
-    <div tal:condition="allow_nochange" style="padding-top: 1em;">
-    	<label><a href="http://images.315ok.org/qyxycjh/qyxysbb.doc">"湘潭市守合同重信用企业申报表.doc"模板下载</a></label>
-
+    <div tal:condition="allow_nochange" style="padding-top: 1em;">    	
         <input
             type="radio"
             value="nochange"

@@ -50,21 +50,29 @@
           	<p></p>
           	<a class="btn btn-default" tal:attributes="href python:context.absolute_url() + '/@@edit-password'"  i18n:translate="" title="change password">change password</a>          	
           	<p></p>
-          	<a class="btn btn-default" tal:attributes="href python:context.absolute_url() + '/@@edit-orgname'" >更新所属组织</a>          	
+          	<a tal:condition="python:view.isOrgAccount()" class="btn btn-default" tal:attributes="href python:context.absolute_url() + '/@@edit-orgname'" >更新所属企业</a>          	
           	</div>       
+      </div>
+      <div class="row" tal:condition="python:view.isSponsor()">
+       	<div class="col-md-offset-6 col-md-3">
+      		<div tal:define="curl python:context.absolute_url() + '/@@managed_orgs_b3_view'">
+      		<a tal:condition="curl" class="btn btn-primary" title="查看申报统计" tal:attributes="href python:curl">
+      			查看申报统计
+      		</a>
+      		</div>     	
       </div>
       <div class="row">
       	<div class="col-md-offset-6 col-md-3">
       		<div tal:define="curl python:view.createSurveyUrl()">
-      		<a tal:condition="curl" class="btn btn-primary" title="创建年检报告" tal:attributes="href python:curl">
-      			创建年检报告
+      		<a tal:condition="curl" class="btn btn-primary" title="创建年度报告" tal:attributes="href python:curl">
+      			创建年度报告
       		</a>
       		</div>
       	</div>
       	<div class="col-md-3">
       		<div tal:define="curl python:view.SurveyUrl()">
-      		<a tal:condition="curl" class="btn btn-primary" title="查看年检报告" tal:attributes="href python:curl">
-      			查看年检报告
+      		<a tal:condition="curl" class="btn btn-primary" title="查看年度报告" tal:attributes="href python:curl">
+      			查看年度报告
       		</a>
       		</div>
       	</div>      	

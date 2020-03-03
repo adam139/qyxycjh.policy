@@ -2,7 +2,6 @@
 import unittest
 from qyxycjh.policy.testing import POLICY_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, setRoles
-from plone.namedfile.file import NamedImage
 from qyxycjh.policy.tests.base import Base
 from plone.namedfile.testing import NamedFileTestLayer
 

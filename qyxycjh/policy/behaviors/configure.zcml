@@ -9,13 +9,13 @@
    
    <plone:behavior
     title="Name from  year"
-    description="generates a name from  preview year"
+    description="qyxycjh:generates a name from  preview year"
     for="plone.dexterity.interfaces.IDexterityContent"
     provides=".year2id.INameFromYear"
     />
    <plone:behavior
     title="Name from  year and day"
-    description="generates a name from  current year and day"
+    description="qyxycjh:generates a name from  current year and day"
     for="plone.dexterity.interfaces.IDexterityContent"
     provides=".year2id.INameFromAdminYear"
     />

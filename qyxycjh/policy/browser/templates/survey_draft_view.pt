@@ -16,8 +16,7 @@
     	</div>
     	<section class="survey">
 			<div class="page-header">
-           <h3>           	
-           	<span tal:replace="python:context.title">Organization administration</span>
+           <h3>          	
            	<span class="focuse" tal:content="python:context.year">2011</span>
            	<span>年度信用报告</span>
            </h3>

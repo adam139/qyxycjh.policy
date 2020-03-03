@@ -15,8 +15,7 @@
     	</div>
     	<section class="survey">
 			<div class="page-header">
-           <h3>           	
-           	<span tal:replace="python:context.title">Organization administration</span>
+           <h3>          	
            	<span class="focuse" tal:content="python:context.year">2011</span>
            	<span>年度企业信用报告</span>
            </h3>
@@ -37,7 +36,7 @@
 					</span>
 					<form class="ajaxform" style=" display:none;">
 						<div class="form-group">
-							<label for="InputRadio">年检评级</label>
+							<label for="InputRadio">年报评级</label>
 						<div class="radio">
 							<label>
     							<input type="radio" name="optionsQuality" id="optionsQuality1" value="hege" checked>合格</label>

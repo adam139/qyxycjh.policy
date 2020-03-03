@@ -20,7 +20,7 @@
  <property name="klass">plone.dexterity.content.Item</property>
  <property name="add_permission">qyxycjh.policy.add.anualreport</property>
  <property name="behaviors">
-    <element value="plone.app.content.interfaces.INameFromTitle" />
+    <element value="qyxycjh.policy.behaviors.year2id.INameFromYear" />
  </property>
 
   <!-- View information -->

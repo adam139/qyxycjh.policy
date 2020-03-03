@@ -15,8 +15,7 @@
     	</div>
     	<section class="survey">
 			<div class="page-header">
-           <h3>           	
-           	<span tal:replace="python:context.title">Organization administration</span>
+           <h3>          	
            	<span class="focuse" tal:content="python:context.year">2011</span>
            	<span>年度企业信用报告</span>
            </h3>
@@ -38,8 +37,8 @@
 		  		<div class="col-md-3">
 					<span tal:condition="python:view.canbeRetract()">
 						<a  tal:attributes="href python:context.absolute_url() +'/@@edit-annual-survey'" 
-						title="更新年检结论" 
-						class="btn btn-primary">更新年检结论</a>
+						title="更新年报结论" 
+						class="btn btn-primary">更新年报结论</a>
 					</span>		  			
 		  		</div>
 				<div class="col-md-3">

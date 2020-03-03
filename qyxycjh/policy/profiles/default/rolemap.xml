@@ -10,6 +10,11 @@
 		<role name="Site Administrator"/>
 		<role name="Manager"/>
 	</permission>
+    <permission name="qyxycjh.policy:Review anual report" acquire="False">
+    	<role name="Sponsor"/>
+		<role name="Site Administrator"/>
+		<role name="Manager"/>
+	</permission>	
 	<permission name="Add portal content" acquire="False">
 		<role name="Member"/>
 		<role name="Site Administrator"/>
