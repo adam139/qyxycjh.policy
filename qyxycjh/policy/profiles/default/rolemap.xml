@@ -23,6 +23,8 @@
 	</permission>		
 	<permission name="Add portal content" acquire="False">
 		<role name="Member"/>
+		<role name="Sponsor"/>
+	    <role name="Owner"/>				
 		<role name="Site Administrator"/>
 	    <role name="Organization"/>
 		<role name="Manager"/>

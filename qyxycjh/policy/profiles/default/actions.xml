@@ -15,7 +15,7 @@
    <property name="icon_expr"></property>
    <property name="available_expr">python:member is not None</property>
    <property name="permissions">
-    <element value="Plone Site Setup: Overview"/>
+    <element value="qyxycjh.policy:Review anual report"/>
    </property>
    <property name="visible">True</property>
   </object>

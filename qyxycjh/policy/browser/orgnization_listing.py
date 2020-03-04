@@ -25,8 +25,9 @@ class Orgnizations_adminView(grok.View):
     grok.context(IOrgnizationFolder)
     grok.template('orgnization_listing_admin')
     grok.name('listview')
-    grok.layer(IThemeSpecific)
-    grok.require('zope2.View')    
+    grok.layer(IThemeSpecific)    
+    grok.require('qyxycjh.policy.review.anualreport')
+#     grok.require('zope2.View')    
     
     def update(self):
         # Hide the editable-object border
@@ -84,7 +85,8 @@ class Orgnizations_adminView(grok.View):
     @memoize         
     def getOrgnizationFolder(self):
         topicfolder = self.catalog()({'object_provides': IOrgnizationFolder.__identifier__})
-        canManage = self.pm().checkPermission(permissions.AddPortalContent,self.context)        
+        canManage = self.pm().checkPermission(permissions.AddPortalContent,self.context)
+       
         if (len(topicfolder) > 0) and  canManage:
             tfpath = topicfolder[0].getURL()
         else:
