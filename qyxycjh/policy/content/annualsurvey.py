@@ -12,15 +12,18 @@ from qyxycjh.policy.utility import fileSizeConstraint
 from qyxycjh.policy import _
 
     
-class IOrgnization_annual_survey(form.Schema,IBasic):
+class IOrgnization_annual_survey(form.Schema):
 
 #所属社会组织
+    dexteritytextindexer.searchable('title')
     title = schema.Choice(
             title=_(u"organization name"),
             vocabulary='qyxycjh.policy.vocabulary.orgnizations',
             required=True
                         )
-
+    description = schema.TextLine(title=_(u"sector"),
+                             default=u"",
+                             required=False,)
 # 上级主管单位
     sponsor = schema.Text(title=_(u"sponsor"), required=False)
 # 上级主管单位意见    
