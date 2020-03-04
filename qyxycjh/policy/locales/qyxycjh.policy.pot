@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-03-02 05:03+0000\n"
+"POT-Creation-Date: 2020-03-04 09:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,16 +21,20 @@ msgstr ""
 msgid "Add annual survey"
 msgstr ""
 
+#: ./browser/templates/organizations_admin_listings_b3.pt:22
+msgid "Add organization"
+msgstr ""
+
 #: ./content/governmentdepartment.py:28
 #: ./content/orgnization.py:29
 msgid "Address"
 msgstr ""
 
-#: ./content/annualsurvey.py:43
+#: ./content/annualsurvey.py:46
 msgid "Attach your anual report (word, etc)."
 msgstr ""
 
-#: ./browser/member_view.py:417
+#: ./browser/member_view.py:411
 msgid "Base information"
 msgstr ""
 
@@ -44,7 +48,7 @@ msgstr ""
 
 #: ./browser/templates/orgnization_annual_survey.pt:26
 #: ./browser/templates/orgnization_view.pt:30
-#: ./browser/templates/survey_draft_view.pt:34
+#: ./browser/templates/survey_draft_view.pt:33
 msgid "Edit"
 msgstr ""
 
@@ -68,12 +72,20 @@ msgstr ""
 msgid "Member"
 msgstr ""
 
-#: ./browser/member_view.py:448
+#: ./browser/member_view.py:442
 msgid "Network information"
 msgstr ""
 
 #: ./browser/ajax_view.py:109
 msgid "Not able to send notifications"
+msgstr ""
+
+#: ./browser/templates/organizations_admin_listings_b3.pt:65
+msgid "Number"
+msgstr ""
+
+#: ./browser/templates/organizations_admin_listings_b3.pt:17
+msgid "Organization administration"
 msgstr ""
 
 #: ./profiles/default/types/qyxycjh.policy.orgnizationsurvey.xml
@@ -109,7 +121,7 @@ msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr ""
 
 #: ./browser/templates/orgnization_annual_survey.pt:36
-#: ./browser/templates/survey_draft_view.pt:44
+#: ./browser/templates/survey_draft_view.pt:43
 msgid "Submit"
 msgstr ""
 
@@ -121,16 +133,12 @@ msgstr ""
 msgid "Uninstalls the qyxycjh.policy package"
 msgstr ""
 
-#: ./browser/member_view.py:432
+#: ./browser/member_view.py:426
 msgid "Update password"
 msgstr ""
 
 #: ./browser/datainout.py:80
 msgid "Wrong specification of the CSV file. Please correct it and retry."
-msgstr ""
-
-#: ./utility.py:8
-msgid "Your image is too large"
 msgstr ""
 
 #: ./profiles/default/types/qyxycjh.policy.orgnizationfolder.xml
@@ -140,6 +148,10 @@ msgstr ""
 #: ./content/governmentdepartment.py:38
 #: ./content/orgnization.py:45
 msgid "a image of the public sign"
+msgstr ""
+
+#: ./browser/templates/organizations_admin_listings_b3.pt:68
+msgid "address"
 msgstr ""
 
 #: ./vocabulary.py:44
@@ -154,7 +166,7 @@ msgstr ""
 msgid "company name"
 msgstr ""
 
-#: ./browser/orgnization_listing.py:528
+#: ./browser/orgnization_listing.py:530
 msgid "edit annual survey comments and result"
 msgstr ""
 
@@ -215,10 +227,11 @@ msgstr ""
 msgid "label_register_code"
 msgstr ""
 
-#: ./content/annualsurvey.py:48
+#: ./content/annualsurvey.py:51
 msgid "last status of the annual survey"
 msgstr ""
 
+#: ./browser/templates/organizations_admin_listings_b3.pt:70
 #: ./content/orgnization.py:33
 msgid "legal person"
 msgstr ""
@@ -239,7 +252,8 @@ msgstr ""
 msgid "organization"
 msgstr ""
 
-#: ./content/annualsurvey.py:19
+#: ./browser/templates/organizations_admin_listings_b3.pt:66
+#: ./content/annualsurvey.py:20
 #: ./content/member.py:26
 msgid "organization name"
 msgstr ""
@@ -257,6 +271,10 @@ msgstr ""
 msgid "orgnization name"
 msgstr ""
 
+#: ./browser/templates/organizations_admin_listings_b3.pt:71
+msgid "pass date"
+msgstr ""
+
 #: ./content/governmentdepartment.py:37
 #: ./content/orgnization.py:44
 msgid "public sign"
@@ -266,23 +284,29 @@ msgstr ""
 msgid "qyxycjh.policy"
 msgstr ""
 
-#: ./content/annualsurvey.py:42
+#: ./browser/templates/organizations_admin_listings_b3.pt:67
+msgid "register code"
+msgstr ""
+
+#: ./content/annualsurvey.py:45
 msgid "report"
 msgstr ""
 
+#: ./content/annualsurvey.py:24
 #: ./content/orgnization.py:25
 msgid "sector"
 msgstr ""
 
-#: ./content/annualsurvey.py:25
+#: ./browser/templates/organizations_admin_listings_b3.pt:69
+#: ./content/annualsurvey.py:28
 msgid "sponsor"
 msgstr ""
 
-#: ./content/annualsurvey.py:32
+#: ./content/annualsurvey.py:35
 msgid "sponsor audit date"
 msgstr ""
 
-#: ./content/annualsurvey.py:27
+#: ./content/annualsurvey.py:30
 msgid "sponsor comments"
 msgstr ""
 
@@ -298,10 +322,10 @@ msgstr ""
 msgid "supervisor organization"
 msgstr ""
 
-#: ./content/annualsurvey.py:53
+#: ./content/annualsurvey.py:56
 msgid "the result of annual survey"
 msgstr ""
 
-#: ./content/annualsurvey.py:37
+#: ./content/annualsurvey.py:40
 msgid "the year for survey"
 msgstr ""
