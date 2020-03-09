@@ -14,7 +14,7 @@ def fileSizeConstraint(value):
     # value implements the plone.namedfile.interfaces.INamedBlobField interface
     size = value.getSize()
 
-    if size > 1024 * 300:
+    if size > 1024 * 1000:
         return False
     else:
         return True        
