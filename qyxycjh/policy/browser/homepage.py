@@ -9,10 +9,10 @@ from Products.CMFPlone.resources import add_resource_on_request
 # add_resource_on_request(self.request, 'jquery.recurrenceinput')
 # add_bundle_on_request(self.request, 'thememapper')
 
-from xtcs.policy import _
+from qyxycjh.policy import _
 from my315ok.products.product import Iproduct
 from collective.diazotheme.bootstrap.browser.homepage import HomepageView as baseview
-from xtcs.policy.browser.interfaces import IThemeSpecific
+from qyxycjh.policy.browser.interfaces import IThemeSpecific
 from Products.CMFPlone.utils import safe_unicode
 import cgi
 
