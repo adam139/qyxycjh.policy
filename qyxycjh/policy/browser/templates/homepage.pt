@@ -121,8 +121,8 @@
   				<div class="tab-content">
    				
     			<div role="tabpanel" class="tab-pane active" id="hangyezixun">
-         	<ul class="tabcontent-lists">    	
-         	<tal:group tal:repeat="obj python:view.collection('hangyezixun',9)">
+         	<ul class="tabcontent-lists">
+         	<tal:group tal:repeat="obj python:view.collection('hangyezixun',5)">
     				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -159,7 +159,7 @@
   				<div class="tab-content">
    				<div role="tabpanel" class="tab-pane active" id="meitibaodao">
          		<ul class="tabcontent-lists">
-         		<tal:group tal:repeat="obj python:view.collection('meitibaodao',5)">    				
+         		<tal:group tal:repeat="obj python:view.collection('meitibaodao',5)">
     						<li class="portletItem"
         					tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         					tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
