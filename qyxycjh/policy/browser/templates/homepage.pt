@@ -66,15 +66,15 @@
 				<div role="tabpanel" class="portlet">
   				<ul  class="nav nav-tabs kuputab-selectors" role="tablist">
     				<li role="presentation" class="active">
-    					<a href="#hangyezixun" aria-controls="hangyezixun" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target python:p + '/hangyezixun/@@tableview'">行业资讯</a>
+    					<a href="#shenbaowenjian" aria-controls="shenbaowenjian" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/shenbaowenjian/@@tableview'">申报文件</a>
     				</li>
   				</ul>
   					<!-- Tab panes start-->
   				<div class="tab-content">
-   				<div role="tabpanel" class="tab-pane active" id="hangyezixun">
+   				<div role="tabpanel" class="tab-pane active" id="shenbaowenjian">
 					<ul class="tabcontent-lists">
-         		<tal:group tal:repeat="obj python:view.collection('hangyezixun',5)">    				
+         		<tal:group tal:repeat="obj python:view.collection('shenbaowenjian',5)">
     						<li class="portletItem"
         					tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         					tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -99,30 +99,30 @@
   			</div>  <!--portlet end -->				
 		</div>	<!--end col-3 of row-1 -->     
        </div>  <!--end row-1 -->                              
-       <div class="row row-2">        
-         	<div class="hidden-xs col-md-12">       
+       <div class="row row-2">
+         	<div class="hidden-xs col-md-12">
        	 		<div class="big-ad" tal:attributes="data-target python:p +'/guanyuqixie/qiyexinyongcujinkuaijianjie'">
 				<p class="adtitle"></p>
 				<p class="addescription"></p>
 		 		</div>
 			</div>		
 		</div>				
-		<div class="row row-3">							
+		<div class="row row-3">
         <div class="col-xs-12 col-md-4 tabPortlet">
 				<div role="tabpanel" class="portlet">
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
 
     				<li role="presentation" class="active">
-    					<a href="#huiyuandanwei" aria-controls="huiyuandanwei" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target python:p + '/huiyuandanwei/@@tableview'">会员单位</a></li>
+    					<a href="#hangyezixun" aria-controls="hangyezixun" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/hangyezixun/@@tableview'">行业资讯</a></li>
   				</ul>
   					<!-- Tab panes start-->
   				<div class="tab-content">
    				
-    			<div role="tabpanel" class="tab-pane active" id="huiyuandanwei">
+    			<div role="tabpanel" class="tab-pane active" id="hangyezixun">
          	<ul class="tabcontent-lists">    	
-         	<tal:group tal:repeat="obj python:view.collection('huiyuandanwei',9)">
+         	<tal:group tal:repeat="obj python:view.collection('hangyezixun',9)">
     				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -138,10 +138,10 @@
             <span class="portletItemDetails"
             	tal:content="python:toLocalizedTime(obj.created )">
                 Date
-            </span>        		
+            </span>
     				</li> 
     			</tal:group>
-    			</ul>    			     	
+    			</ul>
     		</div>
   			</div> <!--Tab panes end -->
 			</div>
