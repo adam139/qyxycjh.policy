@@ -63,6 +63,18 @@ class Orgnizations_adminView(grok.View):
                                                   target_language='zh_CN',
                                                   context=self.context,
                                                   default="")
+        return title
+
+    def tranVocPlone(self,value):
+        """ translate vocabulary value to title"""
+        translation_service = getToolByName(self.context,'translation_service')
+        title = translation_service.translate(
+                                                  value,
+                                                  domain='plone',
+                                                  mapping={},
+                                                  target_language='zh_CN',
+                                                  context=self.context,
+                                                  default="")
         return title   
         
     def fromid2title(self,id):
@@ -183,8 +195,33 @@ class OrgnizationsView(Orgnizations_adminView):
                                             year=i.orgnization_survey_year)           
             outhtml = "%s%s" %(outhtml ,out)
         return outhtml             
-    
 
+class OrgnizationAnualSurveyView(Orgnizations_adminView):
+    """社会组织主视图，包括该组织的年检列表"""
+    grok.context(IOrgnization)
+    grok.template('orgnization_anualsurvey_view')
+    grok.name('anual_survey_view')
+    grok.require('zope2.View')
+
+    def OrgAnnualSurveyList(self):
+        """获取年检结果列表,不考虑年鉴报告状态"""       
+        
+        braindata = self.catalog()({'object_provides':IOrgnization_annual_survey.__identifier__, 
+                                'path':"/".join(self.context.getPhysicalPath()),
+                             'sort_order': 'reverse',
+                             'sort_on': 'created'})
+        
+        outhtml = ""        
+        for i in braindata:            
+            out = """<tr>
+            <td class="title"><a href="%(objurl)s">%(title)s</a></td>
+            <td class="item">%(year)s</td>
+            <td class="result">%(annual_survey)s</td></tr>""" % dict(objurl=i.getURL(),
+                                            title=i.Title,
+                                            annual_survey= self.tranVocPlone(i.review_state),
+                                            year=i.orgnization_survey_year)
+            outhtml = "%s%s" %(outhtml ,out)
+        return outhtml
     
 #年检默认视图    
 class AnnualsurveyView(SurveyView):
