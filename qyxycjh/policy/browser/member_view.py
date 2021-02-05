@@ -363,9 +363,11 @@ class ManagedOrgsView(MembraneMemberView):
                       </a>
                   </td>
                   <td class="col-md-3" >
+                      <a href="%(survey_url)s">
                       <span>%(survey_status)s</span>
+                      </a>
                   </td>
-             </tr>""" % dict(url=objurl, Title=objtitle, survey_status=status)
+             </tr>""" % dict(url=objurl, Title=objtitle, survey_url=objurl + '/@@anual_survey_view',survey_status=status)
 
             outhtml = outhtml + out
         return outhtml
